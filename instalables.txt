@@ -1,0 +1,136 @@
+baseDatos:
+    crear la base de datos stp en postgresSQL (48)=(46)
+  1     - crear el modelo con todo de Compañia                                        /php artisan make:model Company -a
+  2     - crear el modelo con todo de Sucursal                                        /php artisan make:model Branch -a
+  3     - crear el modelo con todo de paises                                          /php artisan make:model Country -a
+  4     - crear el modelo con todo de departamentos                                   /php artisan make:model Province -a
+  5     - crear el modelo con todo de ciudades                                        /php artisan make:model City -a
+  6     - crear el modelo con todo de documento identificación                        /php artisan make:model Identification -a
+  7     - crear el modelo con todo de estado civil                                    /php artisan make:model MaritalStatus -a
+  8     - crear el modelo con todo de talla zapatos                                   /php artisan make:model ShoeSize -a
+  9     - crear el modelo con todo de tipo sangre                                     /php artisan make:model BloodType -a
+  10    - crear el modelo con todo de tipo vinculación                                /php artisan make:model Bonding -a
+  11    - crear el modelo con todo de area de trabajo                                 /php artisan make:model WorkArea -a
+  12    - crear el modelo con todo de actividad economica                             /php artisan make:model EconomicActivity -a
+  13    - crear el modelo con todo de Categoría de proveedor                           /php artisan make:model SupplierCategory -a
+  13    - crear el modelo con todo de productos y servicios                           /php artisan make:model productAndService -a
+  14    - crear el modelo con todo de cargos laboral                                  /php artisan make:model Charge -a
+  15    - crear el modelo con todo de relación familiar                               /php artisan make:model Relationship -a
+  16    - crear el modelo con todo de nivel educativos                                /php artisan make:model EducationalLevel -a
+  17    - crear el modelo con todo de tipo usuarios                                   /php artisan make:model UserType -a
+  18    - crear el modelo con todo de entidad de salud                                /php artisan make:model HealthEntity -a
+  19    - crear el modelo con todo de entidad de pensión                              /php artisan make:model Pension -a
+  20    - crear el modelo con todo de Entidad cesantias                               /php artisan make:model Layoffs -a
+  21    - crear el modelo con todo de entidad Arl                                     /php artisan make:model Arl -a
+  22    - crear el modelo con todo de caja de compensación                            /php artisan make:model CompensationBox -a
+  23    - crear el modelo con todo de categoria de licencia                           /php artisan make:model LicenseCategory -a
+
+  OriginRoute -a
+  DestinationRoute -a
+
+  24    - crear el modelo con todo de rutas                                           /php artisan make:model Route -a
+
+   
+  26    - crear el modelo con todo de documentación conductor vehiculo usuarios       /php artisan make:model Documentation -a
+  27    - crear el modelo con todo de periodo de vencimientos                         /php artisan make:model period -a
+  28    - crear el modelo con todo de conductores                                     /php artisan make:model Driver -a
+  29    - crear el modelo con todo de documentos usuarios                             /php artisan make:model ResourceDocument -a
+  30    - crear el modelo con todo de marcas vehiculos                                /php artisan make:model VehicleBrand -a
+  31    - crear el modelo con todo de linea de vehiculo                               /php artisan make:model VehicleLine -a
+  32    - crear el modelo con todo de tipo de vehiculo                                /php artisan make:model VehicleType -a
+  33    - crear el modelo con todo de clase del vehiculo                              /php artisan make:model VehicleClass -a
+  34    - crear el modelo con todo de dimensión del rin                               /php artisan make:model DimensionRim -a
+  35    - crear el modelo con todo de tipo freno                                      /php artisan make:model BrakeType -a
+  36    - crear el modelo con todo de pedidos o solicitudes                           /php artisan make:model order -a
+  37    - crear el modelo con todo de tipo de contrato                                /php artisan make:model ContractType -a
+  38    - crear el modelo con todo de contratos                                       /php artisan make:model Contract -a
+  39    - crear el modelo con todo de vehiculos                                       /php artisan make:model Vehicle -a
+  40    - crear el modelo con todo de categoria de inspección                         /php artisan make:model InspectionCategory -a
+  41    - crear el modelo con todo de inspección                                      /php artisan make:model Inspection -a
+  42    - crear el modelo con todo de inspección vehicular                            /php artisan make:model VehicleInspection -a
+  43    - crear el modelo con todo de mantenimientos                                  /php artisan make:model maintenance -a
+  44    - crear el modelo con todo de permiso o FUEC                                  /php artisan make:model Permit -a
+  45    - crear el modelo con todo de documentos                                      /php artisan make:model Document -a
+  47    - crear el modelo con todo de accidente                                       /php artisan make:model Accident -a
+  46    - crear el modelo con todo de comntrato-permiso-vehiculo-conductor            /php artisan make:model Cpvd -a
+  48    - crear el modelo con todo de beneficiario                                    /php artisan make:model Beneficiary -a
+  49    - crear el modelo con todo de pasajeros                                       /php artisan make:model passenger -a
+  50    - crear el modelo con todo de permis-vehiculo-conductor                       /php artisan make:model Pvd -a
+  51    - crear el modelo con todo de tipo de alerta                                  /php artisan make:model AlertType -a
+  52    - crear el modelo con todo de estado de la alerta                             /php artisan make:model AlertStatus -a
+  53    - crear el modelo con todo de alertas                                         /php artisan make:model alert -a
+  54    - composer require spatie/laravel-permission
+        - php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+  *************************
+  |      composer require owen-it/laravel-auditing
+  |      php artisan vendor:publish --provider="OwenIt\Auditing\AuditingServiceProvider" --tag="config"
+  |      php artisan vendor:publish --provider="OwenIt\Auditing\AuditingServiceProvider" --tag="migrations"
+  |      php artisan migrate
+  |  agregar estas lineas en los modelos
+  |  use OwenIt\Auditing\Contracts\Auditable;
+  |  
+  |  class Vehicle extends Model implements Auditable
+  |  {
+  |      use \OwenIt\Auditing\Auditable; // Este es el trait mágico
+  |  
+  |      // ... el resto de tu modelo
+  |  }
+  *************************
+
+        crear el modelo con todo de ingreso al resinto o empresa
+
+
+    crear el modelo con todo de categoria de        php artisan make:model LicenseCategory -a
+    
+    volver a enumerar las 3 migraciones que existen
+
+    conectar con postgresSQL
+    configurar .env
+    DB_CONNECTION=pgsql
+    DB_HOST=127.0.0.1
+    DB_PORT=5432
+    DB_DATABASE=stp
+    DB_USERNAME=postgres
+    DB_PASSWORD=12345
+
+--Titulo de Menu--
+
+    Información Empresarial
+    configuración
+        *administrar permisos
+        *administrar tablas maestras
+        *administrar info Empresarial
+    Recursos Humanos
+        *registrar usuarios
+        *registrar terceros
+        *registrar vinculados
+        *registrar conductores
+        *validación de documentos conductores
+        *validación documentos empleados
+        *plantilla documental
+    Parque Automotor
+        *Registrar vehiculos
+        *validación documentos vehiculos
+        *plan de rodamiento
+        *inspección diaria
+    Servicio
+        *solicitudes u ordenes
+        *generar contrato para un colegio
+        *generar contrato para un grupo de padres
+        *generar contrato para un grupo de estudiantes
+        *generar contrato para una empresa
+        *generar contrato para una persona natural
+        *generar contrato para un grupo de personas natural
+        *generar contrato para vinculación tenedor
+        *genetrar contrato para vinculación tercero
+        *generar contrato para vinculación vehiculo
+        *generar contrato para vinculación personal
+        
+        *generar fuec
+
+
+
+nwidart/laravel-modules / composer require nwidart/laravel-modules
+
+laravel-dompdf / composer require dompdf/dompdf
+
