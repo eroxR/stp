@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('maintenances', function (Blueprint $table) {//tabla de mantenimientos
+        Schema::create('maintenances', function (Blueprint $table) { //tabla de mantenimientos
             $table->id();
             $table->foreignId('vehicle_id')->constrained('vehicles')->comment('{id_vehiculo} relación con la tabla vehículos');
             $table->foreignId('usuario_id')->nullable()->constrained('users')->comment('{id_usuario} relación con la tabla usuarios, con la empresa asociada');
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreignId('company_id')->constrained('companies')->comment('{id_compañia} relación con la tabla empresas');
             $table->string('code_company')->comment('{codigo_compañia} relación con la tabla empresas');
             $table->foreignId('branch_id')->constrained('branches')->comment('{id_sucursal} relación con la tabla sucursales');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del mantenimiento ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('relationships', function (Blueprint $table) {//Parentezco
+        Schema::create('relationships', function (Blueprint $table) { //Parentezco
             $table->id();
             $table->string('description_relationship', 45)->comment('{descripcion_parentezco} descripcion nombre del Parentezco');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del parentezco ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

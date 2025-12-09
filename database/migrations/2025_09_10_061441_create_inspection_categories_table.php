@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inspection_categories', function (Blueprint $table) {//tabla de categorías de inspección
+        Schema::create('inspection_categories', function (Blueprint $table) { //tabla de categorías de inspección
             $table->id();
             $table->string('name_description')->comment('{descripcion_nombre} nombre o descripción de la categoría de inspección');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la categoría de inspección ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

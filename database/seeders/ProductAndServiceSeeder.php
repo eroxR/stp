@@ -15,17 +15,17 @@ class ProductAndServiceSeeder extends Seeder
     {
         //
         productAndService::insert([
-            ['ProductandService_description' => 'Asesorias Juridicas'],
-            ['ProductandService_description' => 'Asesorias SGSST'],   
-            ['ProductandService_description' => 'Asesorias Técnicas'],          
-            ['ProductandService_description' => 'Combustible'],               
-            ['ProductandService_description' => 'Contabilidad'],                
-            ['ProductandService_description' => 'Convenios Empresariales'],          
-            ['ProductandService_description' => 'Examenes Medicos de Ingresos y Retiros'],                 
-            ['ProductandService_description' => 'Repuestos'],         
-            ['ProductandService_description' => 'Revisiones Tecnomecanicas'],            
-            ['ProductandService_description' => 'Revisorias Fiscales'],               
-            ['ProductandService_description' => 'Software y Comunicaciones'],
+            ['productandservice_description' => 'Asesorias Juridicas'],
+            ['productandservice_description' => 'Asesorias SGSST'],
+            ['productandservice_description' => 'Asesorias Técnicas'],
+            ['productandservice_description' => 'Combustible'],
+            ['productandservice_description' => 'Contabilidad'],
+            ['productandservice_description' => 'Convenios Empresariales'],
+            ['productandservice_description' => 'Examenes Medicos de Ingresos y Retiros'],
+            ['productandservice_description' => 'Repuestos'],
+            ['productandservice_description' => 'Revisiones Tecnomecanicas'],
+            ['productandservice_description' => 'Revisorias Fiscales'],
+            ['productandservice_description' => 'Software y Comunicaciones'],
         ]);
     }
 }

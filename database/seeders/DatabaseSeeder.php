@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             WorkAreaSeeder::class,
             ChargeSeeder::class,
             CompensationBoxSeeder::class,
+            EconomicActivityCategorySeeder::class,
             EconomicActivitySeeder::class,
             EducationalLevelSeeder::class,
             HealthEntitySeeder::class,
@@ -62,10 +63,11 @@ class DatabaseSeeder extends Seeder
             InspectionSeeder::class,
             ShoeSizeSeeder::class,
             RouteSeeder::class,
+            RoleandPermissionSeeder::class,
             // UserSeeder::class,
             // RoleSeeder::class,
         ]);
-        
+
         User::insert(
             [
                 'username' => '000erenteria',

@@ -270,6 +270,8 @@ class User extends Authenticatable implements Auditable
         'email',
         'email_verified_at',
         'password',
+        'remember_token',
+        'password_changed_at',
         'nit',
         'supplier_name',
         'company_name_provider',
@@ -285,7 +287,7 @@ class User extends Authenticatable implements Auditable
 
     ];
 
-    
+
     /**
      * The accessors to append to the model's array form.
      *
@@ -306,10 +308,10 @@ class User extends Authenticatable implements Auditable
         ];
     }
 
-        protected function names(): Attribute
+    protected function names(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attributes) => trim($attributes['firstname'] . ' ' . $attributes['lastname']),
+            get: fn($value, $attributes) => trim($attributes['firstname'] . ' ' . $attributes['lastname']),
         );
     }
 }

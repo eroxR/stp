@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vehicle_classes', function (Blueprint $table) {//clases de vehiculos
+        Schema::create('vehicle_classes', function (Blueprint $table) { //clases de vehiculos
             $table->id();
             $table->string('vehicle_class_description', 120)->comment('{descripcion_clase_vehiculo} descripcion de la clase de combustible que usa el vehiculo');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la clase de vehiculo ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

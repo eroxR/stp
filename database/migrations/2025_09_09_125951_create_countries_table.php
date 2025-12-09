@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('countries', function (Blueprint $table) {//paises
+        Schema::create('countries', function (Blueprint $table) { //paises
             $table->id();
             $table->string('code_country', 3)->unique()->comment('{codigo_pais} id o codigo unico del pais');
             $table->string('country_name', 60)->comment('{nombre_pais} nombre del pais');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del pais ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

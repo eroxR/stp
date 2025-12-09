@@ -3,6 +3,7 @@ import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 import { cva } from "class-variance-authority"
 import { ChevronDownIcon } from "lucide-react"
 
+
 import { cn } from "@/lib/utils"
 
 function NavigationMenu({
@@ -19,6 +20,7 @@ function NavigationMenu({
       data-viewport={viewport}
       className={cn(
         "group/navigation-menu relative flex max-w-max flex-1 items-center justify-center",
+        // "group/navigation-menu relative flex items-center",
         className
       )}
       {...props}

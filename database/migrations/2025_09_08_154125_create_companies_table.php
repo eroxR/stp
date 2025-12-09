@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('name_company')->comment('{nombre_empresa} nombre o razón social de la empresa');
             $table->string('nit_company')->unique()->comment('{nit_empresa} número de identificación tributaria');
             $table->string('acronym_company')->nullable()->comment('{siglas_empresa} siglas de la empresa');
-            $table->string('economic_activity_code')->unique()->comment('{codigo_actividad_economica} código de actividad económica');
-            $table->string('economic_activity_nombre')->unique()->comment('{nombre_actividad_economica} nombre de la actividad económica');
+            $table->string('economic_activity_code')->comment('{codigo_actividad_economica} código de actividad económica');
+            // $table->string('economic_activity_nombre')->unique()->comment('{nombre_actividad_economica} nombre de la actividad económica');
             $table->string('legal_representative')->nullable()->comment('{representante_legal} nombre del representante legal de la empresa');
             $table->string('legal_representative_identification')->nullable()->comment('{identificacion_representante_legal} identificación del representante legal de la empresa');
             $table->string('legal_representative_document')->nullable()->comment('{documento_identidad_representante_legal} documento de identidad del representante legal de la empresa');
@@ -43,8 +43,8 @@ return new class extends Migration
             $table->string('postal_code_company')->nullable()->comment('{codigo_postal_empresa} código postal de la empresa');
             $table->integer('number_employees')->nullable()->comment('{numero_empleados} número de empleados de la empresa');
             $table->integer('number_branches')->nullable()->comment('{numero_sucursales} número de sucursales de la empresa');
-            $table->enum('status_company',['1','0'])->default('1')->comment('{estado_empresa} estado de la empresa (activo/inactivo)');
-            $table->enum('plans_company',['b','m','p'])->default('b')->comment('{planes_empresa} planes de la empresa (básico, moderado, premium)');
+            $table->enum('status_company', ['1', '0'])->default('1')->comment('{estado_empresa} estado de la empresa (activo/inactivo)');
+            $table->enum('plans_company', ['b', 'm', 'p'])->default('b')->comment('{planes_empresa} planes de la empresa (básico, moderado, premium)');
             $table->timestamp('trial_ends_at')->nullable()->comment('{fecha_fin_prueba} fecha de finalización del período de prueba');
             $table->timestamp('subscription_start_at')->nullable()->comment('{fecha_inicio_suscripcion} fecha de inicio de la suscripción');
             $table->timestamp('subscription_ends_at')->nullable()->comment('{fecha_fin_suscripcion} fecha de finalización de la suscripción');

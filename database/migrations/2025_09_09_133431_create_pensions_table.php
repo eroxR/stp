@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pensions', function (Blueprint $table) {//tabla pensiones
+        Schema::create('pensions', function (Blueprint $table) { //tabla pensiones
             $table->id();
             $table->string('description_pension', 120)->comment('{descripcion_pension} descripcion nombre de pension');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la pension ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

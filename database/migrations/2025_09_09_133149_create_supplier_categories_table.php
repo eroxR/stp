@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('supplier_categories', function (Blueprint $table) {//tabla categoria proveedor
+        Schema::create('supplier_categories', function (Blueprint $table) { //tabla categoria proveedor
             $table->id();
-            $table->string('description_CategorySupplier', 120)->comment('{descripcion_categoria_proveedor} descripcion de la Categoria Proveedor');
+            $table->string('description_categorysupplier', 120)->comment('{descripcion_categoria_proveedor} descripcion de la Categoria Proveedor');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la Categoria Proveedor ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

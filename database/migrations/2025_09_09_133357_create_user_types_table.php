@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_types', function (Blueprint $table) {//tabla tipos de usuario
+        Schema::create('user_types', function (Blueprint $table) { //tabla tipos de usuario
             $table->id();
             $table->string('description_usertype', 120)->comment('{descripcion_tipo_usuario} descripción nombre del tipo de usuario');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del tipo de usuario ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

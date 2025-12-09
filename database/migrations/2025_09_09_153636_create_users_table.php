@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-	/**
-	 * Run the migrations.
-	 */
-	public function up(): void
-	{
-		Schema::create('users', function (Blueprint $table) {//tabla usuarios
-			$table->id();
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('users', function (Blueprint $table) { //tabla usuarios
+            $table->id();
 
             $table->string('username', 25)->nullable()->unique()->comment('{nombre_usuario} nombre de usuario');
             $table->foreignId('identification')->nullable()->constrained('identifications')->comment('{tipo_documento} tipo_documento');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('age')->nullable()->comment('{edad} edad del usuario');
             $table->enum('type_sex', ['F', 'M'])->nullable()->comment('{tipo_sexo} tipo de sexo del usuario');
             $table->foreignId('country')->nullable()->constrained('countries')->comment('{pais_residencia} pais de residencia');
-            $table->foreignId('Department')->nullable()->constrained('provinces')->comment('{departamento_residencia} departamento o provincia de residencia');
+            $table->foreignId('department')->nullable()->constrained('provinces')->comment('{departamento_residencia} departamento o provincia de residencia');
             $table->foreignId('city')->nullable()->constrained('cities')->comment('{ciudad_residencia} ciudad de residencia');
             $table->string('address')->nullable()->comment('{direccion} direccion del usuario');
             $table->string('phone')->nullable()->comment('{telefono} telefono del usuario');
@@ -79,6 +79,7 @@ return new class extends Migration
             $table->string('email')->unique()->comment('{email} email del usuario');
             $table->timestamp('email_verified_at')->nullable()->comment('{email_verificado_en} fecha de verificación del email');
             $table->string('password')->comment('{password} contraseña del usuario');
+            $table->timestamp('password_changed_at')->nullable()->comment('{password_cambiado_en} fecha de cambio de contraseña');
 
             $table->string('nit')->unique()->nullable()->comment('{nit} NIT de empresa o proveedor aliado');
             $table->string('supplier_name', 150)->nullable()->comment('{nombre_proveedor} nombre de empresa o proveedor aliado');
@@ -92,34 +93,35 @@ return new class extends Migration
             $table->foreignId('company_id')->constrained('companies')->comment('{id_compañia} relación con la tabla empresas');
             $table->string('code_company')->comment('{codigo_compañia} relación con la tabla empresas');
             $table->foreignId('branch_id')->constrained('branches')->comment('{id_sucursal} relación con la tabla sucursales');
+            $table->enum('type_access', ['1', '2', '3'])->default('1')->comment('{tipo_acceso} tipo de usuario con que accede al sistema el usuario[nombre_usuario, email,ambos]');
 
-			$table->rememberToken();
-			$table->timestamps();
-		});
+            $table->rememberToken();
+            $table->timestamps();
+        });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) { //tabla tokens para restablecer contraseñas
             $table->string('email')->primary()->comment('{email} email del usuario');
             $table->string('token')->comment('{token} token para restablecer contraseña');
             $table->timestamp('created_at')->nullable()->comment('{fecha_creacion} fecha de creación del token');
-		});
+        });
 
-		Schema::create('sessions', function (Blueprint $table) {//tabla sesiones de usuarios
- $table->string('id')->primary()->comment('{id} id de la sesión');
+        Schema::create('sessions', function (Blueprint $table) { //tabla sesiones de usuarios
+            $table->string('id')->primary()->comment('{id} id de la sesión');
             $table->foreignId('user_id')->nullable()->index()->comment('{user_id} id del usuario');
             $table->string('ip_address', 45)->nullable()->comment('{direccion_ip} dirección IP del usuario conectado');
             $table->text('user_agent')->nullable()->comment('{user_agent} información del agente de usuario');
             $table->longText('payload')->comment('{payload} datos adicionales de la sesión');
             $table->integer('last_activity')->index()->comment('{ultima_actividad} marca de tiempo de la última actividad');
-		});
-	}
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 */
-	public function down(): void
-	{
-		Schema::dropIfExists('users');
-		Schema::dropIfExists('password_reset_tokens');
-		Schema::dropIfExists('sessions');
-	}
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('users');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('sessions');
+    }
 };

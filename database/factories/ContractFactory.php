@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class ContractFactory extends Factory
 {
 
-     /**
+    /**
      * Mantiene un registro del último número de contrato para cada par de (empresa, tipo).
      * Esto evita consultar la base de datos para cada contrato, haciendo el seeding muy rápido.
      * @var array
@@ -40,8 +40,8 @@ class ContractFactory extends Factory
         if (!isset(self::$lastContractNumber[$companyId][$typeId])) {
             // 1. Buscamos el número más alto que YA exista en la base de datos para este par.
             $dbMax = Contract::where('company_id', $companyId)
-                             ->where('type_contract', $typeId)
-                             ->max('contract_number');
+                ->where('type_contract', $typeId)
+                ->max('contract_number');
 
             // 2. Determinamos el número de inicio según las reglas de negocio.
             $startNumber = match ($contractType->contract_name) { // Asume que la columna se llama 'contract_name'
@@ -139,7 +139,7 @@ class ContractFactory extends Factory
             'family_relationship' => null,
             'who_receives' => null,
             'start_day' => null,
-            'End_day' => null,
+            'end_day' => null,
             'legal_bond' => null,
         ];
 
@@ -156,7 +156,7 @@ class ContractFactory extends Factory
             $data['family_relationship'] = $this->faker->randomElement(['Padre', 'Madre', 'Tutor Legal']);
             $data['who_receives'] = $this->faker->name;
             $data['start_day'] = $this->faker->time('H:i:s');
-            $data['End_day'] = $this->faker->time('H:i:s');
+            $data['end_day'] = $this->faker->time('H:i:s');
         }
 
         // Si es un contrato de tipo 7

@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('license_categories', function (Blueprint $table) {//tabla categorias de licencias de conduccion
+        Schema::create('license_categories', function (Blueprint $table) { //tabla categorias de licencias de conduccion
             $table->id();
-            $table->string('code_licenseCategory', 4)->unique()->comment('{codigo_categoria_licencia} codigo de la categoria de la licencia de conduccion');
-            $table->string('description_licenseCategory', 120)->comment('{descripcion_categoria_licencia} descripcion nombre de la categoria de la licencia de conduccion');
+            $table->string('code_licensecategory', 4)->unique()->comment('{codigo_categoria_licencia} codigo de la categoria de la licencia de conduccion');
+            $table->string('description_licensecategory', 120)->comment('{descripcion_categoria_licencia} descripcion nombre de la categoria de la licencia de conduccion');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la categoria de la licencia de conduccion ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

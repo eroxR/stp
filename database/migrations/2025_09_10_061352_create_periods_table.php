@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('periods', function (Blueprint $table) {//tabla periodos de vencimiento
+        Schema::create('periods', function (Blueprint $table) { //tabla periodos de vencimiento
             $table->id();
             $table->string('name_period')->unique()->comment('{nombre_periodo} nombre del periodo de vencimiento');
             $table->integer('days_period')->comment('{dias_periodo} número de días del periodo de vencimiento');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del periodo ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

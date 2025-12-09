@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('marital_statuses', function (Blueprint $table) {//tabla estado civil
+        Schema::create('marital_statuses', function (Blueprint $table) { //tabla estado civil
             $table->id();
             $table->string('description_maritalstatus', 120)->comment('{descripcion_estado_civil} descripcion del estado Civil');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del estado civil ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

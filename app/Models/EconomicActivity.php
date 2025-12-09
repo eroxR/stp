@@ -14,13 +14,14 @@ class EconomicActivity extends Model implements Auditable
 
 
 
-            //relación uno a muchos inversa
-        public function user(){
-            return $this->hasMany('App\Models\user');
-        }  
+    //relación uno a muchos inversa
+    public function user()
+    {
+        return $this->hasMany('App\Models\user');
+    }
 
-        protected $fillable = [
-            'EconomicActivity_number',
-            'description_EconomicActivity'
-        ];
+    protected $fillable = [
+        'economicactivity_number',
+        'description_economicactivity'
+    ];
 }

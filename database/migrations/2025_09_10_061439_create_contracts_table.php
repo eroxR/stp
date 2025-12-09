@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contracts', function (Blueprint $table) {// tabla contratos
+        Schema::create('contracts', function (Blueprint $table) { // tabla contratos
             $table->id();
 
             $table->integer('contract_number')->comment('{numero_contrato} numero unico de contrato agrupados por tipo de contrato');
@@ -60,7 +60,7 @@ return new class extends Migration
             $table->string('family_relationship', 120)->nullable()->comment('{parentesco} parentesco con el estudiante (si aplica)');
             $table->string('who_receives', 120)->nullable()->comment('{quien_recibe} nombre de la persona que recibe al estudiante (si aplica)');
             $table->time('start_day')->nullable()->comment('{inicio_jornada} hora de inicio de la jornada del estudiante');
-            $table->time('End_day')->nullable()->comment('{finalizacion_jornada} hora de finalización de la jornada del estudiante');
+            $table->time('end_day')->nullable()->comment('{finalizacion_jornada} hora de finalización de la jornada del estudiante');
             $table->bigInteger('identificationcard_representative_group')->nullable()->comment('{cedula_representante_grupo} cedula del representante del grupo');
             $table->string('group_representative_name', 60)->nullable()->comment('{nombre_representante_grupo} nombre del representante del grupo');
             $table->string('dateofexpedition_representative_group', 100)->nullable()->comment('{lugar_fecha_expedicion_cedula_representante_grupo} lugar y fecha de expedición del documento');

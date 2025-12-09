@@ -20,6 +20,28 @@ export interface NavItem {
     href: NonNullable<InertiaLinkProps['href']>;
     icon?: LucideIcon | null;
     isActive?: boolean;
+    subItems?: NavSubItem[];
+}
+
+// export interface NavItem {
+//     title: string;
+//     href?: string | RouteDefinition; // 1. Haz que href sea opcional
+//     icon?: LucideIcon;
+//     subItems?: {    // 2. Añade la propiedad opcional subItems
+//         title: string;
+//         href: string;
+//         description: string;
+//     }[];
+// }
+
+export interface Permission {
+    id: string;
+    label: string;
+    guard_name: string;
+}
+
+export interface PermissionsPageProps {
+    permissions: Permission[];
 }
 
 export interface SharedData {
@@ -29,6 +51,9 @@ export interface SharedData {
     quote: { message: string; author: string };
     auth: Auth;
     sidebarOpen: boolean;
+    session: {
+        lifetime_in_seconds: number;
+    };
     [key: string]: unknown;
 }
 

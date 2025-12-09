@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inspections', function (Blueprint $table) {//tabla de inspecciones
+        Schema::create('inspections', function (Blueprint $table) { //tabla de inspecciones
             $table->id();
             $table->string('name_description')->comment('{descripcion_nombre} nombre o descripción de la inspección');
             $table->foreignId('category_id')->constrained('inspection_categories')->comment('{id_categoria} id de la categoría de inspección');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la inspección ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

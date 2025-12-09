@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('beneficiaries', function (Blueprint $table) {//tabla de beneficiarios
+        Schema::create('beneficiaries', function (Blueprint $table) { //tabla de beneficiarios
             $table->id();
 
             $table->string('full_name', 100)->nullable()->comment('{nombre_completo} nombre completo del beneficiario');
             $table->string('identificationcard', 15)->nullable()->comment('{identificacion} documento de identidad del beneficiario');
-            $table->enum('beneficiaryType', ['1', '2', '3'])->nullable()->comment('{tipo_beneficiario} tipo de beneficiario["Adulto mayor","Conyugue","Hijo o Hijastro"]');
+            $table->enum('beneficiarytype', ['1', '2', '3'])->nullable()->comment('{tipo_beneficiario} tipo de beneficiario["Adulto mayor","Conyugue","Hijo o Hijastro"]');
             $table->foreignId('user_id')->constrained('users')->comment('{id_usuario} id del usuario al que pertenece el beneficiario');
             $table->foreignId('company_id')->constrained('companies')->comment('{id_compañia} relación con la tabla empresas');
             $table->string('code_company')->comment('{codigo_compañia} relación con la tabla empresas');

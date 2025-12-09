@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('identifications', function (Blueprint $table) {//documento de identificacion
+        Schema::create('identifications', function (Blueprint $table) { //documento de identificacion
             $table->id();
             $table->string('description_identification', 120)->comment('{descripcion_identificacion} descripción de documento de identificacion');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del documento de identificación ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

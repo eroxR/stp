@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('charges', function (Blueprint $table) {//tabla cargos
+        Schema::create('charges', function (Blueprint $table) { //tabla cargos
             $table->id();
             $table->foreignId('area')->nullable()->constrained('work_areas')->comment('{area_id} Area de trabajo asociada al cargo');
             $table->string('code_charge', 5)->unique()->comment('{codigo_cargo} codigo del cargo');
             $table->string('description_charge', 120)->comment('{descripcion_cargo} descripcion del cargo');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del cargo ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

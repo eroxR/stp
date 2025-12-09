@@ -187,7 +187,6 @@ class UserFactory extends Factory
         $newEmail = 'prueba' . self::$emailCounter . '@example.com';
 
         if (User::where('email', $newEmail)->exists()) {
-
         }
 
         // Incrementamos el contador para que el próximo usuario tenga el siguiente número.
@@ -206,7 +205,7 @@ class UserFactory extends Factory
             'age' => null,
             'type_sex' => null,
             'country' => null,
-            'Department' => null,
+            'department' => null,
             'city' => null,
             'address' => null,
             'phone' => null,
@@ -274,6 +273,7 @@ class UserFactory extends Factory
             'code_company' => $companyData['code'],
             'branch_id' => '001',
             'remember_token' => Str::random(10),
+            'type_access' => '1',
         ];
     }
 
@@ -309,7 +309,7 @@ class UserFactory extends Factory
                 'identificationcard' => $this->faker->unique()->numerify('##########'),
                 'type_sex' => $this->faker->randomElement(['M', 'F']),
                 'country' => Country::inRandomOrder()->first()->id,
-                'Department' => Province::inRandomOrder()->first()->id,
+                'department' => Province::inRandomOrder()->first()->id,
                 'city' => City::inRandomOrder()->first()->id,
                 'user_status' => '2',
                 'user_entry_date' => $this->faker->dateTimeBetween('-2 years', 'now'),
@@ -440,7 +440,7 @@ class UserFactory extends Factory
             'age' => $birthdate->age,
             'type_sex' => $this->faker->randomElement(['M', 'F']),
             'country' => Country::where('id', 43)->first()->id, // Colombia
-            'Department' => Province::inRandomOrder()->first()->id,
+            'department' => Province::inRandomOrder()->first()->id,
             'city' => City::inRandomOrder()->first()->id,
             'address' => $this->faker->streetAddress(),
             'phone' => $this->faker->phoneNumber,

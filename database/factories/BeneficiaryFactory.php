@@ -18,7 +18,7 @@ class BeneficiaryFactory extends Factory
     public function definition(): array
     {
 
-                $companyData = $this->faker->randomElement([
+        $companyData = $this->faker->randomElement([
             ['id' => 2, 'code' => '001'],
             ['id' => 3, 'code' => '002'],
         ]);
@@ -27,7 +27,7 @@ class BeneficiaryFactory extends Factory
             //
             'full_name' => $this->faker->name,
             'identificationcard' => $this->faker->unique()->numerify('##########'),
-            'beneficiaryType' => $this->faker->randomElement(['1', '2', '3']),
+            'beneficiarytype' => $this->faker->randomElement(['1', '2', '3']),
             'user_id' => User::where('charge', 10)->inRandomOrder()->first()->id,
             'company_id' => $companyData['id'],
             'code_company' => $companyData['code'],

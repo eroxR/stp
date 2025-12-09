@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('alerts', function (Blueprint $table) { // tabla de alertas
             $table->id();
-            $table->foreignId('alertStatus_id')->constrained('alert_statuses')->comment('{estado_alerta} estado de la alerta');
-            $table->foreignId('alertType_id')->constrained('alert_types')->comment('{tipo_alerta} tipo de alerta');
+            $table->foreignId('alertstatus_id')->constrained('alert_statuses')->comment('{estado_alerta} estado de la alerta');
+            $table->foreignId('alerttype_id')->constrained('alert_types')->comment('{tipo_alerta} tipo de alerta');
             $table->string('title_alert', 100)->comment('{titulo_alerta} titulo de la alerta');
             $table->json('description_alert')->comment('{descripcion_alerta} descripcion de la alerta');
             $table->timestamp('alert_registration_date')->comment('{fecha_registro_alerta} fecha de registro de la alerta');

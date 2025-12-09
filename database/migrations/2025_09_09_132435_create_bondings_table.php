@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bondings', function (Blueprint $table) {//tabla tipos de vinculacion
+        Schema::create('bondings', function (Blueprint $table) { //tabla tipos de vinculacion
             $table->id();
             $table->string('bonding_type_description', 120)->comment('{descripcion_tipo_vinculacion} descripcion tipo Vinculacion o contrato');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del tipo de vinculación ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

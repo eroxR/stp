@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('educational_levels', function (Blueprint $table) {//tabla niveles educativos
+        Schema::create('educational_levels', function (Blueprint $table) { //tabla niveles educativos
             $table->id();
-            $table->string('description_levelEducation', 45)->comment('{descripcion_nivel_educativo} descripcion nombre del nivel Educativo');
+            $table->string('description_leveleducation', 45)->comment('{descripcion_nivel_educativo} descripcion nombre del nivel Educativo');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del nivel educativo ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

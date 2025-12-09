@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('brake_types', function (Blueprint $table) {//tipos de frenos que usa el vehiculo
+        Schema::create('brake_types', function (Blueprint $table) { //tipos de frenos que usa el vehiculo
             $table->id();
             $table->string('brake_type_description', 120)->comment('{descripcion_tipo_freno} descripción del tipos de frenos que usa el vehiculo');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del tipo de freno ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

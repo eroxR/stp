@@ -19,8 +19,7 @@ class CompanySeeder extends Seeder
                 'name_company' => 'Sistema de Transporte de Pasajeros S.A.S',
                 'nit_company' => '900373123-1',
                 'acronym_company' => 'STP S.A.S',
-                'economic_activity_code' => '4939',
-                'economic_activity_nombre' => 'Transporte terrestre de pasajeros',
+                'economic_activity_code' => '4921',
                 'legal_representative' => 'Alba Hidalgo Osiris',
                 'legal_representative_identification' => 'CC',
                 'legal_representative_document' => '123456789',
@@ -59,7 +58,6 @@ class CompanySeeder extends Seeder
                 'nit_company' => '900123456-1',
                 'acronym_company' => 'Veloz S.A.S',
                 'economic_activity_code' => '4921',
-                'economic_activity_nombre' => 'Transporte de pasajeros',
                 'legal_representative' => 'Juan Pérez',
                 'legal_representative_identification' => 'CC',
                 'legal_representative_document' => '1020304050',
@@ -96,8 +94,7 @@ class CompanySeeder extends Seeder
                 'name_company' => 'Carga Segura Ltda.',
                 'nit_company' => '900789123-2',
                 'acronym_company' => 'Carga Segura',
-                'economic_activity_code' => '4923',
-                'economic_activity_nombre' => 'Transporte de carga por carretera',
+                'economic_activity_code' => '4921',
                 'legal_representative' => 'Ana Rodríguez',
                 'legal_representative_identification' => 'CC',
                 'legal_representative_document' => '5060708090',
@@ -132,4 +129,3 @@ class CompanySeeder extends Seeder
         ]);
     }
 }
-

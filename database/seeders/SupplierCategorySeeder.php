@@ -11,13 +11,13 @@ class SupplierCategorySeeder extends Seeder
     /**
      * Run the database seeds.
      */
-public function run(): void
+    public function run(): void
     {
         SupplierCategory::insert([
-            ['description_CategorySupplier' => 'INSUMOS'],
-            ['description_CategorySupplier' => 'MANTENIMIENTOS'],
-            ['description_CategorySupplier' => 'SERVICIOS'],
-            ['description_CategorySupplier' => 'TRANSPORTES'],
+            ['description_categorysupplier' => 'INSUMOS'],
+            ['description_categorysupplier' => 'MANTENIMIENTOS'],
+            ['description_categorysupplier' => 'SERVICIOS'],
+            ['description_categorysupplier' => 'TRANSPORTES'],
         ]);
     }
 }

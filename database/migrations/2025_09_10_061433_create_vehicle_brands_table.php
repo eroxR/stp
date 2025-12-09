@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vehicle_brands', function (Blueprint $table) {//marcas de vehiculo
+        Schema::create('vehicle_brands', function (Blueprint $table) { //marcas de vehiculo
             $table->id();
             $table->string('code_brand_vehicle', 60)->unique()->comment('{codigo_marca_vehiculo} codigo de la marca comercial del vehículo');
             $table->string('brand_vehicle', 60)->comment('{marca_vehiculo} nombre de la marca comercial del vehículo');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la marca del vehículo ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

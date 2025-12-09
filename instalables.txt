@@ -11,6 +11,7 @@ baseDatos:
   9     - crear el modelo con todo de tipo sangre                                     /php artisan make:model BloodType -a
   10    - crear el modelo con todo de tipo vinculación                                /php artisan make:model Bonding -a
   11    - crear el modelo con todo de area de trabajo                                 /php artisan make:model WorkArea -a
+  12    - crear el modelo con todo de actividad economica cvategoria                  /php artisan make:model EconomicActivityCategory -a
   12    - crear el modelo con todo de actividad economica                             /php artisan make:model EconomicActivity -a
   13    - crear el modelo con todo de Categoría de proveedor                           /php artisan make:model SupplierCategory -a
   13    - crear el modelo con todo de productos y servicios                           /php artisan make:model productAndService -a
@@ -59,6 +60,8 @@ baseDatos:
   51    - crear el modelo con todo de tipo de alerta                                  /php artisan make:model AlertType -a
   52    - crear el modelo con todo de estado de la alerta                             /php artisan make:model AlertStatus -a
   53    - crear el modelo con todo de alertas                                         /php artisan make:model alert -a
+        crear el modelo con todo de seguimiento vehicular                              php artisan make:model Tracking -a
+    
   54    - composer require spatie/laravel-permission
         - php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
   *************************
@@ -134,3 +137,374 @@ nwidart/laravel-modules / composer require nwidart/laravel-modules
 
 laravel-dompdf / composer require dompdf/dompdf
 
+plantillas de layout, y utilización sidebar creado desde creado
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ import AppLayout from '@/layouts/app-layout';
+ import { Head } from '@inertiajs/react';
+ import { useState } from 'react';
+
+ interface MenuItem {
+     id: string;
+     label: string;
+     icon?: string;
+ }
+
+ interface MenuSection {
+     title?: string;
+     items: MenuItem[];
+ }
+
+ export default function Permissions() {
+     const [activeMenuItem, setActiveMenuItem] = useState('roles');
+     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+     const [selectedVersion, setSelectedVersion] = useState('v1.0.1');
+     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+     const versions = [
+         { id: 'v1.0.1', label: 'v1.0.1', current: true },
+         { id: 'v1.1.0-alpha', label: 'v1.1.0-alpha', current: false },
+         { id: 'v2.0.0-beta1', label: 'v2.0.0-beta1', current: false },
+     ];
+
+     const menuSections: MenuSection[] = [
+         {
+             title: 'Configuración',
+             items: [
+                 { id: 'roles', label: 'Roles' },
+                 { id: 'permissions', label: 'Permisos' },
+                 { id: 'users', label: 'Usuarios' },
+                 { id: 'assignments', label: 'Asignaciones' },
+                 { id: 'prueba1', label: 'prueba1' },
+                 { id: 'prueba2', label: 'prueba2' },
+                 { id: 'prueba3', label: 'prueba3' },
+                 { id: 'prueba4', label: 'prueba4' },
+                 { id: 'prueba5', label: 'prueba5' },
+                 { id: 'prueba6', label: 'prueba6' },
+                 { id: 'prueba7', label: 'prueba7' },
+                 { id: 'prueba8', label: 'prueba8' },
+                 { id: 'prueba9', label: 'prueba9' },
+                 { id: 'prueba10', label: 'prueba10' },
+                 { id: 'prueba11', label: 'prueba11' },
+                 { id: 'prueba12', label: 'prueba12' },
+             ],
+         },
+     ];
+
+     const renderContent = () => {
+         switch (activeMenuItem) {
+             case 'roles':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">Gestión de Roles</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para gestionar roles del sistema.</p>
+                     </div>
+                 );
+             case 'permissions':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">Gestión de Permisos</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para gestionar permisos del sistema.</p>
+                     </div>
+                 );
+             case 'users':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">Gestión de Usuarios</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para gestionar usuarios del sistema.</p>
+                     </div>
+                 );
+             case 'assignments':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">Asignaciones</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba1':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba1</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba2':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba2</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba3':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba3</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba4':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba4</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba5':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba5</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba6':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba6</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba7':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba7</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba8':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba8</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba9':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba9</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba10':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba10</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba11':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba11</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba12':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba12</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             case 'prueba13':
+                 return (
+                     <div>
+                         <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white">prueba13</h2>
+                         <p className="text-gray-600 dark:text-gray-300">Contenido para asignar roles y permisos a usuarios.</p>
+                     </div>
+                 );
+             default:
+                 return null;
+         }
+     };
+
+     const handleVersionSelect = (versionId: string) => {
+         setSelectedVersion(versionId);
+         setIsDropdownOpen(false);
+     };
+
+     return (
+         <AppLayout>
+             <Head title="Permissions" />
+             <div className="relative flex h-[calc(100vh-4rem)] gap-4 p-4">
+                 {/* Sidebar */}
+                 <aside
+                     className={`${
+                         isSidebarOpen ? 'w-64' : 'w-0'
+                     } fixed flex h-full flex-shrink-0 flex-col overflow-hidden rounded-xl border border-gray-800 bg-[#1a1a1a] shadow-lg transition-all duration-300 md:relative md:translate-x-0 ${
+                         isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+                     } top-0 left-0 z-40 md:z-auto`}
+                 >
+                     {/* Header with Dropdown */}
+                     <div className="relative flex-shrink-0 p-4">
+                         <button
+                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                             className="mb-4 flex w-full items-center gap-3 rounded-lg p-2 transition-colors hover:bg-[#2a2a2a]"
+                         >
+                             <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-blue-600">
+                                 <svg className="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                     <path
+                                         strokeLinecap="round"
+                                         strokeLinejoin="round"
+                                         strokeWidth={2}
+                                         d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                                     />
+                                 </svg>
+                             </div>
+                             <div className="flex-1 text-left">
+                                 <h3 className="text-sm font-semibold text-white">Permissions</h3>
+                                 <p className="text-xs text-gray-400">{selectedVersion}</p>
+                             </div>
+                             <svg
+                                 className={`h-4 w-4 text-gray-400 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
+                                 fill="none"
+                                 stroke="currentColor"
+                                 viewBox="0 0 24 24"
+                             >
+                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                             </svg>
+                         </button>
+
+                         {/* Dropdown Menu */}
+                         {isDropdownOpen && (
+                             <div className="absolute top-20 right-4 left-4 z-50 rounded-lg border border-gray-700 bg-[#2a2a2a] py-2 shadow-xl">
+                                 {versions.map((version) => (
+                                     <button
+                                         key={version.id}
+                                         onClick={() => handleVersionSelect(version.id)}
+                                         className="flex w-full items-center justify-between px-4 py-2 text-left text-sm text-gray-300 transition-colors hover:bg-[#3a3a3a]"
+                                     >
+                                         <span>{version.label}</span>
+                                         {version.id === selectedVersion && (
+                                             <svg className="h-4 w-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                             </svg>
+                                         )}
+                                     </button>
+                                 ))}
+                             </div>
+                         )}
+
+                         {/* Search */}
+                         <div className="relative">
+                             <input
+                                 type="text"
+                                 placeholder="Search..."
+                                 className="w-full rounded-lg bg-[#2a2a2a] px-3 py-2 pl-9 text-sm text-white placeholder-gray-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                             />
+                             <svg
+                                 className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-500"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 viewBox="0 0 24 24"
+                             >
+                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                             </svg>
+                         </div>
+                     </div>
+
+                     {/* Navigation */}
+                     <nav className="flex-1 overflow-y-auto px-3 pb-4">
+                         {menuSections.map((section, sectionIndex) => (
+                             <div key={sectionIndex} className="mb-6">
+                                 {section.title && (
+                                     <h4 className="mb-2 px-3 text-xs font-semibold tracking-wider text-gray-400 uppercase">{section.title}</h4>
+                                 )}
+                                 <div className="space-y-1">
+                                     {section.items.map((item) => (
+                                         <button
+                                             key={item.id}
+                                             onClick={() => setActiveMenuItem(item.id)}
+                                             className={`w-full rounded-lg px-3 py-2 text-left text-sm transition-colors duration-150 ${
+                                                 activeMenuItem === item.id
+                                                     ? 'bg-[#2a2a2a] font-medium text-white'
+                                                     : 'text-gray-400 hover:bg-[#2a2a2a] hover:text-white'
+                                             }`}
+                                         >
+                                             {item.label}
+                                         </button>
+                                     ))}
+                                 </div>
+                             </div>
+                         ))}
+                     </nav>
+                 </aside>
+
+                 {/* Toggle Sidebar Button - Siempre visible */}
+                 <button
+                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                     className={`fixed z-50 flex h-8 w-8 items-center justify-center rounded-lg border border-gray-700 bg-[#1a1a1a] shadow-lg transition-all duration-300 hover:bg-[#2a2a2a]`}
+                     style={{
+                         left: isSidebarOpen ? 'calc(16rem + 1.5rem)' : '1.5rem',
+                         top: '6rem',
+                     }}
+                 >
+                     <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                     </svg>
+                 </button>
+
+                 {/* Main Content */}
+                 <main
+                     className={`h-full flex-1 overflow-y-auto rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 dark:border-gray-700 dark:bg-gray-800 ${
+                         !isSidebarOpen ? 'md:ml-0' : ''
+                     }`}
+                 >
+                     {renderContent()}
+                 </main>
+             </div>
+
+             {/* Overlay para cerrar dropdown */}
+             {isDropdownOpen && <div className="fixed inset-0 z-30" onClick={() => setIsDropdownOpen(false)} />}
+
+             {/* Overlay para cerrar sidebar en móvil */}
+             {isSidebarOpen && <div className="fixed inset-0 z-30 bg-black/50 md:hidden" onClick={() => setIsSidebarOpen(false)} />}
+         </AppLayout>
+     );
+ }
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+import SidebarLayout from '@/components/sidebar-layout';
+
+export default function OtraPagina() {
+    const [activeItem, setActiveItem] = useState('item1');
+
+    const menuSections = [
+        {
+            title: 'Mi Sección',
+            items: [
+                { id: 'item1', label: 'Item 1' },
+                { id: 'item2', label: 'Item 2' },
+            ],
+        },
+    ];
+
+    return (
+        <SidebarLayout
+            title="Mi Página"
+            version="v2.0.0"
+            versions={[{ id: 'v2.0.0', label: 'v2.0.0', current: true }]}
+            menuSections={menuSections}
+            activeMenuItem={activeItem}
+            onMenuItemChange={setActiveItem}
+        >
+            {/* Tu contenido aquí */}
+        </SidebarLayout>
+    );
+}
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+boton cambio de idioma
+
+ <div className="p-4 text-center">
+     <h1 className="text-xl font-bold">{t('welcome')}</h1>
+     <button
+         onClick={() => i18n.changeLanguage(i18n.language === 'es' ? 'en' : 'es')}
+         className="mt-4 rounded-lg bg-blue-500 px-3 py-1 text-white"
+     >
+         {i18n.language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+     </button>
+ </div>

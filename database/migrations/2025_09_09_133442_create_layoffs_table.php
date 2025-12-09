@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('layoffs', function (Blueprint $table) {//cesantias
+        Schema::create('layoffs', function (Blueprint $table) { //cesantias
             $table->id();
             $table->string('description_layoffs', 120)->comment('{descripcion_cesantias} descripcion nombre de las cesantias');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de las cesantias ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }

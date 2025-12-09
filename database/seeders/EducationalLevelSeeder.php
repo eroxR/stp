@@ -14,21 +14,21 @@ class EducationalLevelSeeder extends Seeder
     public function run(): void
     {
         EducationalLevel::insert([
-            ['description_levelEducation' => 'Carrera Profesional'],
-            ['description_levelEducation' => 'Carrera Profesional sin Terminar'],
-            ['description_levelEducation' => 'Doctorado'],
-            ['description_levelEducation' => 'Doctorado sin Terminar'],
-            ['description_levelEducation' => 'Ninguno'],
-            ['description_levelEducation' => 'Postgrado'],
-            ['description_levelEducation' => 'Postgrado sin Terminar'],
-            ['description_levelEducation' => 'Primaria'],
-            ['description_levelEducation' => 'Primaria Incompleta'],
-            ['description_levelEducation' => 'Segundaria'],
-            ['description_levelEducation' => 'Segundaria Incompleta'],
-            ['description_levelEducation' => 'Tecnico'],
-            ['description_levelEducation' => 'Tecnico sin Terminar'],
-            ['description_levelEducation' => 'Tecnologo'],
-            ['description_levelEducation' => 'Tecnologo sin Terminar'],
+            ['description_leveleducation' => 'Carrera Profesional'],
+            ['description_leveleducation' => 'Carrera Profesional sin Terminar'],
+            ['description_leveleducation' => 'Doctorado'],
+            ['description_leveleducation' => 'Doctorado sin Terminar'],
+            ['description_leveleducation' => 'Ninguno'],
+            ['description_leveleducation' => 'Postgrado'],
+            ['description_leveleducation' => 'Postgrado sin Terminar'],
+            ['description_leveleducation' => 'Primaria'],
+            ['description_leveleducation' => 'Primaria Incompleta'],
+            ['description_leveleducation' => 'Segundaria'],
+            ['description_leveleducation' => 'Segundaria Incompleta'],
+            ['description_leveleducation' => 'Tecnico'],
+            ['description_leveleducation' => 'Tecnico sin Terminar'],
+            ['description_leveleducation' => 'Tecnologo'],
+            ['description_leveleducation' => 'Tecnologo sin Terminar'],
         ]);
     }
 }

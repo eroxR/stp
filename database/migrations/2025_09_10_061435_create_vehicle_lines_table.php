@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('brand_vehicle', 60)->comment('{codigo_marca_vehiculo} marca comercial del vehículo');
             $table->string('line_vehicle', 60)->comment('{Linea_vehiculo} nombre o codigo de la linea del vehículo');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la linea del vehiculo ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
 
             $table->foreign('brand_vehicle') // La columna en ESTA tabla.

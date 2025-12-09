@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('documentations', function (Blueprint $table) {//tabla documentaciones
+        Schema::create('documentations', function (Blueprint $table) { //tabla documentaciones
             $table->id();
             $table->string('document_name')->comment('{nombre_documento} nombre del documento');
             $table->string('document_path')->comment('{ruta_documento} ruta del documento');
@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignId('company_id')->constrained('companies')->comment('{id_compañia} relación con la tabla empresas');
             $table->string('code_company')->comment('{codigo_compañia} relación con la tabla empresas');
             $table->foreignId('branch_id')->constrained('branches')->comment('{id_sucursal} relación con la tabla sucursales');
+            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la documentacion ante el uso de los usuarios (visible/invisible)');
             $table->timestamps();
         });
     }
