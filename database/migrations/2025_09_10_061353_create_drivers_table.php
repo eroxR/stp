@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('license_expiration')->nullable()->comment('{fecha_expiracion} fecha de expiración de la licencia de conducción');
             $table->enum('priority_license_expiration', ['1', '0'])->default('0')->comment('{prioridad_licencia} prioridad de validación de la licencia (Alta 1=si, 0=no Baja)');
             $table->foreignId('period_license')->constrained('periods')->comment('{id_periodo_licencia} id del periodo de vencimiento de la licencia');
+            $table->bigInteger('assigned_vehicle')->nullable()->comment('{vehiculo_asignado} id de la placa del vehículo asignado al conductor');
             $table->date('certificate_drugs_alchoolemia')->nullable()->comment('{fecha_certificado_drogas_alcoholemia} fecha del certificado de drogas y alcoholemia');
             $table->enum('priority_certificate_drugs_alchoolemia', ['1', '0'])->default('0')->comment('{prioridad_certificado_drogas_alcoholemia} prioridad de validación del certificado (Alta 1=si, 0=no Baja)');
             $table->foreignId('period_certificate_drugs_alchoolemia')->constrained('periods')->comment('{periodo_certificado_drogas_alcoholemia} id del periodo de vencimiento del certificado');

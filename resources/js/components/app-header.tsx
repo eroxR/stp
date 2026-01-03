@@ -1,6 +1,7 @@
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Icon } from '@/components/icon';
-import { NotificationsMenuContent } from '@/components/notifications-menu-content';
+// import { NotificationsMenuContent } from '@/components/notifications-menu-content';
+import { NotificationsMenu } from '@/components/notifications-menu-content';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -11,9 +12,20 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { UserMenuContent } from '@/components/user-menu-content';
 import { useInitials } from '@/hooks/use-initials';
 import { companyInfo, dashboard, permissions } from '@/routes';
-import { type BreadcrumbItem, type NavItem, type SharedData } from '@/types';
+import { PageProps, type BreadcrumbItem, type NavItem } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { Bell, BookOpen, Car, Folder, LayoutGrid, Menu, Search, SendToBack, Settings, UserCircle } from 'lucide-react';
+import {
+    // Bell,
+    BookOpen,
+    Car,
+    Folder,
+    LayoutGrid,
+    Menu,
+    Search,
+    SendToBack,
+    Settings,
+    UserCircle,
+} from 'lucide-react';
 import AppLogo from './app-logo';
 import AppLogoIcon from './app-logo-icon';
 import { ThemeToggle } from './theme-toggle';
@@ -100,9 +112,11 @@ interface AppHeaderProps {
 }
 
 export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
-    const page = usePage<SharedData>();
+    // const page = usePage<SharedData>();
+    const page = usePage<PageProps>();
     const { auth } = page.props;
     const getInitials = useInitials();
+    // const unreadCount = auth.notifications?.count || 0;
     return (
         <>
             <div className="sticky top-0 z-50 border-b border-sidebar-border/80 bg-white dark:bg-neutral-900">
@@ -194,31 +208,33 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                             <Button variant="ghost" size="icon" className="group h-9 w-9 cursor-pointer">
                                 <Search className="!size-5 opacity-80 group-hover:opacity-100" />
                             </Button>
-                            <ThemeToggle />
-                            <TooltipProvider delayDuration={0}>
-                                <Tooltip>
-                                    <TooltipTrigger asChild>
-                                        <DropdownMenu>
-                                            <DropdownMenuTrigger asChild>
-                                                <Button variant="ghost" size="icon" className="relative h-9 w-9">
-                                                    <span className="absolute top-1 right-1 flex h-2 w-2">
-                                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
-                                                        <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
-                                                    </span>
-                                                    <Bell className="h-4 w-4" />
-                                                    <span className="sr-only">Notificaciones</span>
-                                                </Button>
-                                            </DropdownMenuTrigger>
-                                            <DropdownMenuContent className="w-80" align="end">
-                                                <NotificationsMenuContent />
-                                            </DropdownMenuContent>
-                                        </DropdownMenu>
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                        <p>Notificaciones</p>
-                                    </TooltipContent>
-                                </Tooltip>
-                            </TooltipProvider>
+                            {/* <ThemeToggle /> */}
+                            <div className="ml-auto flex items-center space-x-2">
+                                {/* ... Search ... */}
+                                <ThemeToggle />
+
+                                {/* REEMPLAZA TODO EL BLOQUE ANTIGUO DE NOTIFICACIONES POR ESTO: */}
+                                <NotificationsMenu />
+                            </div>
+                            {/* <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button variant="ghost" size="icon" className="relative h-9 w-9">
+                                        {unreadCount > 0 && (
+                                            <div className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center">
+                                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
+                                                <span className="relative inline-flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white ring-2 ring-background">
+                                                    {unreadCount > 99 ? '99+' : unreadCount}
+                                                </span>
+                                            </div>
+                                        )}
+
+                                        <Bell className="h-5 w-5" />
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent className="w-80" align="end">
+                                    <NotificationsMenuContent />
+                                </DropdownMenuContent>
+                            </DropdownMenu> */}
                             <div className="hidden lg:flex">
                                 {rightNavItems.map((item) => (
                                     <TooltipProvider key={item.title} delayDuration={0}>

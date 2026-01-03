@@ -15,13 +15,13 @@ class alert extends Model implements Auditable
     //relación uno a muchos inversa
     public function alertStatus()
     {
-        return $this->belongsTo('App\Models\alertStatus');
+        return $this->belongsTo('App\Models\alertStatus', 'alertstatus_id');
     }
 
     //relación uno a muchos inversa
     public function alertType()
     {
-        return $this->belongsTo('App\Models\alertType');
+        return $this->belongsTo('App\Models\alertType', 'alerttype_id');
     }
 
     //ralación uno a muchos inversa
@@ -44,13 +44,13 @@ class alert extends Model implements Auditable
         return $this->morphTo();
     }
 
-    protected $casts = [
-        'description_alert' => 'array',
-    ];
+    // protected $casts = [
+    //     'description_alert' => 'array',
+    // ];
 
     protected $fillable = [
-        'alertStatus_id',
-        'alertType_id',
+        'alertstatus_id',
+        'alerttype_id',
         'title_alert',
         'description_alert',
         'alert_registration_date',

@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('alert_statuses', function (Blueprint $table) { // tabla estados de alertas
             $table->id();
-            $table->enum('name', ['1', '2', '3', '4'])->comment('{nombre} nombre del estado de la alerta ("Nueva", "En Progreso", "Resuelta", "Archivada"))');
+            $table->integer('code')->comment('{codigo} codigo del nombre del estado de la alerta ("Nueva", "En Progreso", "Resuelta", "Archivada"))');
+            $table->string('name', 20)->comment('{nombre} nombre del estado de la alerta ("Nueva","Resuelta", "Archivada", "Eliminada")');
+            $table->string('icon_description', 100)->nullable()->comment('{icono_descripcion} descripcion del estado de la alerta');
             $table->text('description')->nullable()->comment('{descripcion} descripcion del estado de la alerta');
-            $table->string('description_statusalert', 20)->comment('{descripcion_estadoalerta} descripcion del estado de la alerta');
             $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del estado de la alerta ante el uso de los usuarios (visible/invisible)');
 
             $table->timestamps();

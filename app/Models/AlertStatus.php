@@ -18,7 +18,16 @@ class AlertStatus extends Model implements Auditable
         return $this->hasMany('App\Models\alert');
     }
 
+    // Asumiendo según tus comentarios: 1=Nueva, 2=Resuelta, 3=Archivada, 4=Eliminada
+    public const STATUS_NEW = 1;
+    public const STATUS_RESOLVED = 2;
+    public const STATUS_ARCHIVED = 3;
+    public const STATUS_DELETED = 4;
+
     protected $fillable = [
-        'description_statusalert',
+        'description',
+        'name',
+        'icon_description',
+        'code',
     ];
 }
