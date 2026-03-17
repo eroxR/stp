@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('shoe_sizes', function (Blueprint $table) { //tabla tallas de zapato
             $table->id();
             $table->string('description_shoesize', 120)->comment('{descripcion_talla_zapato} descripción de la talla de zapato');
-            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la talla de zapato ante el uso de los usuarios (visible/invisible)');
+            // $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la talla de zapato ante el uso de las compañias (visible/invisible)');
+            $table->json('company_view')->nullable()->comment('{visibilidad_empresa} array de empresas a las cuales la talla de zapato no es visible');
             $table->timestamps();
         });
     }

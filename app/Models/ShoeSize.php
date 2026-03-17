@@ -20,6 +20,12 @@ class ShoeSize extends Model implements Auditable
     }
 
     protected $fillable = [
-        'description_shoeSize', // descripción de la talla de zapato
+        'description_shoesize',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
     ];
 }

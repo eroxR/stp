@@ -46,8 +46,13 @@ class PasswordController extends Controller
         // dd($validated);
         // dd($request->user());
         // 2. Actualización del usuario
+        $codecompany = $request->user()->code_company; // Obtener el company_code del usuario autenticado
+        // dd($codecompany);
+
+
         $request->user()->forceFill([
-            'password' => Hash::make($validated['password']),
+            // 'password' => Hash::make($validated['password']),
+            'password' => Hash::make($codecompany . $validated['password']),
             'password_changed_at' => now(), // ¡Seguimos marcando que ya la cambió!
         ])->save();
 

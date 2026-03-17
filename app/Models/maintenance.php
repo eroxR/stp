@@ -27,7 +27,7 @@ class maintenance extends Model implements Auditable
     public function company()
     {
         return $this->belongsTo(Company::class);
-    }       
+    }
     //relación uno a muchos con Branch
     public function branch()
     {
@@ -36,7 +36,7 @@ class maintenance extends Model implements Auditable
 
     protected $fillable = [
         'vehicle_id',
-        'usuario_id',
+        'user_id',
         'maintenance_provider',
         'maintenance_date',
         'mileage',

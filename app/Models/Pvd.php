@@ -13,4 +13,21 @@ class Pvd extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
 
+    protected $fillable = [
+        'permit_id',
+        'plate_vehicle',
+        'vehicle_type',
+        'brand_vehicle',
+        'model_vehicle',
+        'side_vehicle',
+        'card_operation',
+        'expiration_card_operation',
+        'secure_end_date',
+        'technomechanical_end_date',
+        'expiration_preventive',
+        'driver_names_lastnames',
+        'document_number',
+        'license_number',
+        'expiration_license'
+    ];
 }

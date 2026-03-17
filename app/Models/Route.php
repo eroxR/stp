@@ -12,7 +12,7 @@ class Route extends Model implements Auditable
     use HasFactory;
     use \OwenIt\Auditing\Auditable;
 
-    
+
     //relación con la tabla companies
     public function company()
     {
@@ -26,10 +26,22 @@ class Route extends Model implements Auditable
         return $this->belongsTo(Branch::class);
     }
 
-        //relación uno a muchos inversa
-    public function user()
+    //relación uno a muchos inversa
+    // public function user()
+    // {
+    //     return $this->hasMany('App\Models\Contract');
+    // }
+
+    // Relación con contratos donde esta ruta es el ORIGEN
+    public function contractsOrigin()
     {
-        return $this->hasMany('App\Models\Contract');
+        return $this->hasMany(Contract::class, 'origin_route');
+    }
+
+    // Relación con contratos donde esta ruta es el DESTINO
+    public function contractsDestination()
+    {
+        return $this->hasMany(Contract::class, 'destination_route');
     }
 
     protected $fillable = [
@@ -39,5 +51,13 @@ class Route extends Model implements Auditable
         'company_id',
         'code_company',
         'branch_id',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
+        'company_id' => 'integer',
+        'branch_id' => 'integer',
     ];
 }

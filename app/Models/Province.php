@@ -14,18 +14,27 @@ class Province extends Model implements Auditable
 
 
 
-            //relación uno a muchos inversa
-        public function country(){
-            return $this->belongsTo('App\Models\country');
-        }
-    
-        //relación uno a muchos inversa
-        public function user(){
-            return $this->hasMany('App\Models\user');
-        } 
-        
-        protected $fillable = [
-            'department_name',
-            'country_id'
-        ];
+    //relación uno a muchos inversa
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'partner_country');
+    }
+
+    //relación uno a muchos inversa
+    public function user()
+    {
+        return $this->hasMany('App\Models\user');
+    }
+
+    protected $fillable = [
+        'department_name',
+        'partner_country',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
+        'partner_country' => 'integer',
+    ];
 }

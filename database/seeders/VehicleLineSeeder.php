@@ -18253,8 +18253,6 @@ class VehicleLineSeeder extends Seeder
             ['brand_vehicle' => '1076','line_vehicle' => 'SIN LINEA'],
             ['brand_vehicle' => '1134','line_vehicle' => 'CAPTAIN C 4400'],
             ['brand_vehicle' => '1134','line_vehicle' => 'DUOLIKA L 4400'],
-
-
         ]);
     }
 }

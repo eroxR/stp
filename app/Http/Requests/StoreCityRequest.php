@@ -6,23 +6,19 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCityRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            //
+            'city_name' => 'required|string|max:255',
+            'partner_country' => 'required|exists:countries,id',
+            // Validamos que el departamento exista (opcionalmente podrías validar que pertenezca al país, pero con exists basta por ahora)
+            'associate_department' => 'required|exists:provinces,id',
+            'visibility' => 'required|in:0,1',
         ];
     }
 }

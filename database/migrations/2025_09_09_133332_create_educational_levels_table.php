@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('educational_levels', function (Blueprint $table) { //tabla niveles educativos
             $table->id();
             $table->string('description_leveleducation', 45)->comment('{descripcion_nivel_educativo} descripcion nombre del nivel Educativo');
-            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del nivel educativo ante el uso de los usuarios (visible/invisible)');
+            // $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del nivel educativo ante el uso de las compañias (visible/invisible)');
+            $table->json('company_view')->nullable()->comment('{visibilidad_empresa} array de empresas a las cuales el nivel educativo no  es visible');
             $table->timestamps();
         });
     }

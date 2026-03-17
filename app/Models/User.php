@@ -32,173 +32,170 @@ class User extends Authenticatable implements Auditable
     ];
 
     //relación muchos a muchos
-    public function contract()
+    public function contractData()
     {
-        return $this->belongsToMany('App\Models\contract');
+        return $this->belongsToMany('App\Models\Contract');
+    }
+
+    //relación muchos a muchos
+    public function entityData()
+    {
+        return $this->belongsToMany('App\Models\Entity');
+    }
+
+
+    //relación muchos a muchos
+    public function cpvd()
+    {
+        return $this->belongsToMany('App\Models\Cpvd');
     }
 
     //relación uno a muchos polimorfica
-    public function documents()
+    public function documentsData()
     {
-        return $this->morphMany('App\Models\document', 'documentable');
+        return $this->morphMany('App\Models\Document', 'documentable');
     }
 
     //relación uno a muchos
-    public function bonding()
+    public function bondingData()
     {
-        return $this->belongsTo('App\Models\bonding');
+        return $this->belongsTo('App\Models\Bonding', 'bonding_type');
     }
 
     //relación uno a muchos
-    public function identification()
+    public function identificationData()
     {
-        return $this->belongsTo('App\Models\identification');
+        return $this->belongsTo('App\Models\Identification', 'identification');
 
         // return $this->belongsTo(identification::class);
     }
 
     //relación uno a muchos
-    public function relationship()
+    public function relationshipData()
     {
-        return $this->belongsTo('App\Models\relationship');
+        return $this->belongsTo('App\Models\Relationship', 'relationship');
     }
 
     //relación uno a muchos
-    public function supplierCategory()
+    public function supplierCategoryData()
     {
-        return $this->belongsTo('App\Models\supplierCategory');
+        return $this->belongsTo('App\Models\SupplierCategory', 'supplier_category');
     }
 
     //relación uno a muchos
-    public function charge()
+    public function chargeData()
     {
-        return $this->belongsTo('App\Models\charge');
+        return $this->belongsTo('App\Models\Charge', 'charge');
     }
 
     //relación uno a muchos
-    public function economicActivity()
+    public function economicActivityData()
     {
-        return $this->belongsTo('App\Models\economicActivity');
+        return $this->belongsTo('App\Models\EconomicActivity', 'economic_activity');
     }
 
     //relación uno a muchos
-    public function city()
+    public function cityData()
     {
-        return $this->belongsTo('App\Models\city');
+        return $this->belongsTo('App\Models\City', 'city');
     }
 
     //relación uno a muchos
-    public function country()
+    public function cityBirthData()
     {
-        return $this->belongsTo('App\Models\country');
+        return $this->belongsTo('App\Models\City', 'city_birth');
     }
 
     //relación uno a muchos
-    public function Province()
+    public function countryData()
     {
-        return $this->belongsTo('App\Models\Province');
+        return $this->belongsTo('App\Models\Country', 'country');
+    }
+
+
+    //relación uno a muchos
+    public function workAreaData()
+    {
+        return $this->belongsTo('App\Models\WorkArea', 'work_area');
     }
 
     //relación uno a muchos
-    public function workArea()
+    public function compensationBoxData()
     {
-        return $this->belongsTo('App\Models\workArea');
+        return $this->belongsTo('App\Models\CompensationBox', 'compensationbox');
     }
 
     //relación uno a muchos
-    public function arl()
+    public function layoffsData()
     {
-        return $this->belongsTo('App\Models\arl');
+        return $this->belongsTo('App\Models\layoffs', 'layoffs');
     }
 
     //relación uno a muchos
-    public function compensationBox()
+    public function healthEntityData()
     {
-        return $this->belongsTo('App\Models\compensationBox');
+        return $this->belongsTo('App\Models\HealthEntity', 'eps');
     }
 
     //relación uno a muchos
-    public function layoffs()
+    public function bloodTypeData()
     {
-        return $this->belongsTo('App\Models\layoffs');
+        return $this->belongsTo('App\Models\BloodType', 'blood_type');
     }
 
     //relación uno a muchos
-    public function healthEntity()
+    public function productsAndServicesData()
     {
-        return $this->belongsTo('App\Models\healthEntity');
+        return $this->belongsTo('App\Models\ProductsAndService', 'products_and_services');
+    }
+
+
+    //relación uno a uno
+    public function vehicleData()
+    {
+        return $this->hasOne('App\Models\Vehicle', 'assigned_vehicle');
     }
 
     //relación uno a muchos
-    public function pension()
+    public function usertypeData()
     {
-        return $this->belongsTo('App\Models\pension');
-    }
-
-    //relación uno a muchos
-    public function bloodType()
-    {
-        return $this->belongsTo('App\Models\bloodType');
-    }
-
-    //relación uno a muchos
-    public function productsAndServices()
-    {
-        return $this->belongsTo('App\Models\productsAndServices');
-    }
-
-    //relación uno auno
-    public function driver()
-    {
-        return $this->hasOne('App\Models\driver', 'user_id', 'user_id');
-    }
-
-    //relación uno a muchos
-    public function vehicle()
-    {
-        return $this->hasMany('App\Models\vehicle');
-    }
-
-    //relación uno a muchos
-    public function usertype()
-    {
-        return $this->belongsTo('App\Models\usertype');
+        return $this->belongsTo('App\Models\UserType', 'usertype');
     }
 
     //relación uno a muchos polimorfica
-    public function beneficiary()
+    public function beneficiaryData()
     {
-        return $this->morphMany('App\Models\document', 'beneficiary');
+        return $this->morphMany('App\Models\Document', 'beneficiary');
     }
 
     //relación uno a muchos
-    public function company()
+    public function companyData()
     {
-        return $this->belongsTo('App\Models\company');
+        return $this->belongsTo('App\Models\Company', 'company_id');
     }
 
     //relación uno a muchos
-    function branch()
+    function branchData()
     {
-        return $this->belongsTo('App\Models\branch');
+        return $this->belongsTo('App\Models\Branch', 'branch_id');
     }
 
     //relación uno a muchos
-    public function educationLevel()
+    public function educationLevelData()
     {
-        return $this->belongsTo('App\Models\educationLevel');
+        return $this->belongsTo('App\Models\EducationalLevel', 'education_level');
     }
 
     //relación uno a muchos
-    public function civilStatus()
+    public function civilStatusData()
     {
-        return $this->belongsTo('App\Models\civilStatus');
+        return $this->belongsTo('App\Models\MaritalStatus', 'civil_status');
     }
 
     //relación uno a muchos
-    public function shoeSize()
+    public function shoeSizeData()
     {
-        return $this->belongsTo('App\Models\shoeSize');
+        return $this->belongsTo('App\Models\ShoeSize', 'shoe_size');
     }
 
     //relación uno a muchos
@@ -217,22 +214,12 @@ class User extends Authenticatable implements Auditable
         'age',
         'type_sex',
         'country',
-        'Department',
+        'department',
         'city',
         'address',
         'phone',
         'phone_cellular',
-        'eps',
-        'date_eps',
         'blood_type',
-        'pension',
-        'date_pension',
-        'layoffs',
-        'date_layoffs',
-        'arl',
-        'arl_date',
-        'compensationbox',
-        'date_compensationbox',
         'user_status',
         'user_entry_date',
         'date_withdrawal_user',
@@ -270,20 +257,16 @@ class User extends Authenticatable implements Auditable
         'email',
         'email_verified_at',
         'password',
-        'remember_token',
         'password_changed_at',
-        'nit',
-        'supplier_name',
-        'company_name_provider',
-        'commercial_reason_supplier',
-        'supplier_web_page',
-        'supplier_category',
-        'economic_activity',
-        'products_and_services',
-        'supplier_description',
+        'license_category',
+        'assigned_vehicle',
+        'driver_status',
+        'linked',
+        'isLinked',
         'company_id',
         'code_company',
         'branch_id',
+        'type_access',
 
     ];
 

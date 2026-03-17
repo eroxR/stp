@@ -13,12 +13,19 @@ class MaritalStatus extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
 
-            //relación uno a muchos inversa
-        public function user(){
-            return $this->hasMany('App\Models\user');
-        } 
+    //relación uno a muchos inversa
+    public function user()
+    {
+        return $this->hasMany('App\Models\user');
+    }
 
-        protected $fillable = [
-            'description_maritalstatus',
-        ];
+    protected $fillable = [
+        'description_maritalstatus',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
+    ];
 }

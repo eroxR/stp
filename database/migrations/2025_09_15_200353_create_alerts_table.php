@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('alertstatus_id')->constrained('alert_statuses')->comment('{estado_alerta} estado de la alerta');
             $table->foreignId('alerttype_id')->constrained('alert_types')->comment('{tipo_alerta} tipo de alerta');
             $table->string('title_alert', 100)->comment('{titulo_alerta} titulo de la alerta');
-            $table->tsxt('description_alert')->nullable()->comment('{descripcion_alerta} descripcion de la alerta');
+            $table->text('description_alert')->nullable()->comment('{descripcion_alerta} descripcion de la alerta');
             $table->timestamp('alert_registration_date')->comment('{fecha_registro_alerta} fecha de registro de la alerta');
             $table->timestamp('alert_attention_date')->nullable()->comment('{fecha_atención_alerta} fecha de atención de la alerta');
             $table->integer('alertable_id')->nullable()->comment('{alertable_id} id de la tabla polimorfica');

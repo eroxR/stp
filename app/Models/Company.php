@@ -12,10 +12,10 @@ class Company extends Model implements Auditable
     use HasFactory;
     use \OwenIt\Auditing\Auditable;
 
-    
 
 
-        //relación uno a muchos inversa
+
+    //relación uno a muchos inversa
     public function user()
     {
         return $this->hasMany('App\Models\User');
@@ -112,7 +112,6 @@ class Company extends Model implements Auditable
         'nit_company',
         'acronym_company',
         'economic_activity_code',
-        'economic_activity_nombre',
         'legal_representative',
         'legal_representative_identification',
         'legal_representative_document',
@@ -126,7 +125,6 @@ class Company extends Model implements Auditable
         'phone_company',
         'email_company',
         'website_company',
-        // 'logo_company',
         'scope_company',
         'description_company',
         'country_company',
@@ -143,6 +141,6 @@ class Company extends Model implements Auditable
         'trial_ends_at',
         'subscription_start_at',
         'subscription_ends_at',
-        'renewal_date'
+        'renewal_date',
     ];
 }

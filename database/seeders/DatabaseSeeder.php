@@ -30,32 +30,29 @@ class DatabaseSeeder extends Seeder
             PeriodSeeder::class,
             CountrySeeder::class,
             ProvinceSeeder::class,
+            IdentificationSeeder::class,
             CitySeeder::class,
-            ArlSeeder::class,
             BloodTypeSeeder::class,
             BondingSeeder::class,
             WorkAreaSeeder::class,
             ChargeSeeder::class,
-            CompensationBoxSeeder::class,
             EconomicActivityCategorySeeder::class,
             EconomicActivitySeeder::class,
             EducationalLevelSeeder::class,
-            HealthEntitySeeder::class,
-            IdentificationSeeder::class,
-            LayoffsSeeder::class,
             LicenseCategorySeeder::class,
             MaritalStatusSeeder::class,
-            PensionSeeder::class,
             ProductAndServiceSeeder::class,
             RelationshipSeeder::class,
             SupplierCategorySeeder::class,
             UsertypeSeeder::class,
             BrakeTypeSeeder::class,
             DimensionRimSeeder::class,
+            EntitySeeder::class,
             VehicleClassSeeder::class,
             VehicleTypeSeeder::class,
             VehicleBrandSeeder::class,
             VehicleLineSeeder::class,
+            FuelTypeSeeder::class,
             ContractTypeSeeder::class,
             AlertStatusSeeder::class,
             AlertTypeSeeder::class,
@@ -70,7 +67,7 @@ class DatabaseSeeder extends Seeder
 
         User::insert(
             [
-                'username' => '000erenteria',
+                'username' => '@eiro',
                 'identification' => 1,
                 'identificationcard' => '1088286',
                 'firstname' => 'Eiro',
@@ -80,7 +77,7 @@ class DatabaseSeeder extends Seeder
                 'type_sex' => 'M',
                 'usertype' => 1,
                 'email' => 'erox@gmail.com',
-                'password' => Hash::make('12345'),
+                'password' => Hash::make('00012345'),
                 'company_id' => 1,
                 'code_company' => '000',
                 'branch_id' => '001',
@@ -98,15 +95,11 @@ class DatabaseSeeder extends Seeder
         // Crear 50 clientes
         User::factory()->count(50)->asCliente()->create();
 
-        // Crear 30 proveedores
-        User::factory()->count(30)->asProveedor()->create();
-
         // Crear 20 vinculados
         User::factory()->count(20)->asVinculado()->create();
 
         $this->call([
             OrderSeeder::class,
-            DriverSeeder::class,
             VehicleSeeder::class,
             ContractSeeder::class,
             PermitSeeder::class,

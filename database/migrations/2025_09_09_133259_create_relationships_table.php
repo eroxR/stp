@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('relationships', function (Blueprint $table) { //Parentezco
             $table->id();
             $table->string('description_relationship', 45)->comment('{descripcion_parentezco} descripcion nombre del Parentezco');
-            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del parentezco ante el uso de los usuarios (visible/invisible)');
+            // $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del parentezco ante el uso de las compañias (visible/invisible)');
+            $table->json('company_view')->nullable()->comment('{visibilidad_empresa} array de empresas a las cuales el parentezco no es visible');
             $table->timestamps();
         });
     }

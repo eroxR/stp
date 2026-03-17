@@ -14,7 +14,9 @@ class period extends Model implements Auditable
 
 
     protected $fillable = [
-        'name_period', // {nombre_periodo} nombre del periodo de vencimiento
-        'days_period', // {dias_periodo} número de días del periodo de vencimiento
+        'name_period',
+        'days_period',
+        'visibility',
+        'company_view'
     ];
 }

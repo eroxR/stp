@@ -6,23 +6,22 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateAlertStatusRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
+        // Obtenemos el ID del registro actual para ignorarlo en la validación unique
+        $id = $this->alert_status->id;
+
         return [
-            //
+            'code' => 'required|integer|unique:alert_statuses,code,' . $id,
+            'name' => 'required|string|max:20',
+            'icon_description' => 'nullable|string|max:100',
+            'description' => 'nullable|string',
+            'visibility' => 'required|in:0,1',
         ];
     }
 }

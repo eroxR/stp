@@ -13,25 +13,25 @@ class Accident extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
     //relación muchos a muchos
-    public function driver()
+    public function userData()
     {
-        return $this->belongsToMany('App\Models\driver');
+        return $this->belongsToMany('App\Models\user');
     }
 
     //relación muchos a muchos
-    public function vehicle()
+    public function vehicleData()
     {
         return $this->belongsToMany('App\Models\vehicle');
     }
 
     //relación muchos a muchos
-    public function company()
+    public function companyData()
     {
         return $this->belongsToMany('App\Models\company');
     }
 
     //relación muchos a muchos
-    public function branch()
+    public function branchData()
     {
         return $this->belongsToMany('App\Models\branch');
     }
@@ -43,6 +43,6 @@ class Accident extends Model implements Auditable
         'comparing_number',
         'company_id',
         'code_company',
-        'branch_id'
+        'branch_id',
     ];
 }

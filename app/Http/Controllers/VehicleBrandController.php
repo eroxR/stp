@@ -8,59 +8,22 @@ use App\Http\Requests\UpdateVehicleBrandRequest;
 
 class VehicleBrandController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreVehicleBrandRequest $request)
     {
-        //
+        VehicleBrand::create($request->validated());
+        return redirect()->back()->with('success', 'Marca de vehículo creada correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(VehicleBrand $vehicleBrand)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(VehicleBrand $vehicleBrand)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateVehicleBrandRequest $request, VehicleBrand $vehicleBrand)
     {
-        //
+        $vehicleBrand->update($request->validated());
+        return redirect()->back()->with('success', 'Marca de vehículo actualizada correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(VehicleBrand $vehicleBrand)
     {
-        //
+        $vehicleBrand->delete();
+        return redirect()->back()->with('success', 'Marca de vehículo eliminada correctamente.');
     }
+
 }

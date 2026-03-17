@@ -13,13 +13,20 @@ class LicenseCategory extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
 
-        //relación uno a uno
-    public function driver(){
+    //relación uno a uno
+    public function driver()
+    {
         return $this->hasMany('App\Models\driver');
     }
 
     protected $fillable = [
-        'code_licenseCategory', //{codigo_categoria_licencia} codigo de la categoria de la licencia de conduccion
-        'description_licenseCategory', //{descripcion_categoria_licencia} descripcion nombre de la categoria de la licencia de conduccion
+        'code_licensecategory',
+        'description_licensecategory',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
     ];
 }

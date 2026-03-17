@@ -6,23 +6,19 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreContractTypeRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            //
+            'contract_name' => 'required|string|max:120',
+            'description_typecontract' => 'nullable|string|max:120',
+            'start_contract' => 'nullable|integer|min:0',
+            'contract_limit' => 'nullable|integer|gte:start_contract', // gte: Mayor o igual que inicio
+            'visibility' => 'required|in:0,1',
         ];
     }
 }

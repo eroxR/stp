@@ -14,14 +14,10 @@ class VehicleClassSeeder extends Seeder
     public function run(): void
     {
         VehicleClass::insert([
-            ['vehicle_class_description' => 'Gasolina'],
-            ['vehicle_class_description' => 'Diesel'],
-            ['vehicle_class_description' => 'Gas Natural Vehicular (GNV)'],
-            ['vehicle_class_description' => 'Gasolina-Gas'],
+            ['vehicle_class_description' => 'Transmisión manual'],
+            ['vehicle_class_description' => 'Transmisión automática'],
+            ['vehicle_class_description' => 'Transmisión semiautomática'],
             ['vehicle_class_description' => 'Eléctrico'],
-            ['vehicle_class_description' => 'Hidrógeno'],
-            ['vehicle_class_description' => 'Etanol'],
-            ['vehicle_class_description' => 'Biodiesel'],
         ]);
     }
 }

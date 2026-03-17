@@ -14,12 +14,6 @@ class Permit extends Model implements Auditable
 
 
     //relación muchos a muchos
-    public function driver()
-    {
-        return $this->belongsToMany(driver::class);
-    }
-
-    //relación muchos a muchos
     public function vehicle()
     {
         return $this->belongsToMany(vehicle::class);

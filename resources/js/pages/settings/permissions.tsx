@@ -52,6 +52,7 @@ export default function Permissions({ roles, rolesWithPermissions, allPermission
     const menuSections: MenuSection[] = useMemo(() => {
         return [
             {
+                // title: `Roles del Sistema (${roles.length})`,
                 title: `Roles del Sistema (${roles.length})`,
                 items: roles.map((role) => ({
                     id: role.id,

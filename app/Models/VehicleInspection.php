@@ -32,6 +32,5 @@ class VehicleInspection extends Model implements Auditable
         'mileage_start',
         'mileage_end',
         'array_inspection',
-        // 'observation',
     ];
 }

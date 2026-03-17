@@ -13,12 +13,15 @@ class SupplierCategory extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
 
-            //relación uno a muchos inversa
-        public function user(){
-            return $this->hasMany('App\Models\user');
-        } 
+    //relación uno a muchos inversa
+    public function user()
+    {
+        return $this->hasMany('App\Models\user');
+    }
 
-        protected $fillable = [
-            'description_CategorySupplier',
-        ];
+    protected $fillable = [
+        'description_categorysupplier',
+        'visibility',
+        'company_view'
+    ];
 }

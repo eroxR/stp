@@ -13,12 +13,15 @@ class Bonding extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
 
-          //relación uno a muchos inversa
-        public function user(){
-            return $this->hasMany('App\Models\User');
-        }
+    //relación uno a muchos inversa
+    public function user()
+    {
+        return $this->hasMany('App\Models\User');
+    }
 
-        protected $fillable = [
-            'bonding_type_description'
-        ];
+    protected $fillable = [
+        'bonding_type_description',
+        'visibility',
+        'company_view'
+    ];
 }

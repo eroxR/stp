@@ -8,59 +8,22 @@ use App\Http\Requests\UpdateEducationalLevelRequest;
 
 class EducationalLevelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreEducationalLevelRequest $request)
     {
-        //
+        EducationalLevel::create($request->validated());
+        return redirect()->back()->with('success', 'Nivel educativo creado correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(EducationalLevel $educationalLevel)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(EducationalLevel $educationalLevel)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateEducationalLevelRequest $request, EducationalLevel $educationalLevel)
     {
-        //
+        $educationalLevel->update($request->validated());
+        return redirect()->back()->with('success', 'Nivel educativo actualizado correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(EducationalLevel $educationalLevel)
     {
-        //
+        $educationalLevel->delete();
+        return redirect()->back()->with('success', 'Nivel educativo eliminado correctamente.');
     }
+
 }

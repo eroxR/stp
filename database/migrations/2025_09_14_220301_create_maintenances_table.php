@@ -23,7 +23,8 @@ return new class extends Migration
             $table->foreignId('company_id')->constrained('companies')->comment('{id_compañia} relación con la tabla empresas');
             $table->string('code_company')->comment('{codigo_compañia} relación con la tabla empresas');
             $table->foreignId('branch_id')->constrained('branches')->comment('{id_sucursal} relación con la tabla sucursales');
-            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del mantenimiento ante el uso de los usuarios (visible/invisible)');
+            // $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del mantenimiento ante el uso de los usuarios (visible/invisible)');
+
             $table->timestamps();
         });
     }

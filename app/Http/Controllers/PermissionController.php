@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Spatie\Permission\Models\Permission;
+// use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+
+
+use App\Models\Permission; // <--- USAR TU MODELO LOCAL, NO EL DE SPATIE DIRECTAMENTE
+use App\Http\Requests\StorePermissionRequest;
+use App\Http\Requests\UpdatePermissionRequest;
 
 class PermissionController extends Controller
 {
@@ -138,5 +143,32 @@ class PermissionController extends Controller
         return back()->with([
             'success' => "Permisos copiados exitosamente de '{$sourceRole->name}' a '{$targetRole->name}'",
         ]);
+    }
+
+    // --- MÉTODOS CRUD PARA EL MAESTRO ---
+
+    public function store(StorePermissionRequest $request)
+    {
+        Permission::create($request->validated());
+        return redirect()->back()->with('success', 'Permiso creado correctamente.');
+    }
+
+    public function update(UpdatePermissionRequest $request, Permission $permission)
+    {
+        $permission->update($request->validated());
+        return redirect()->back()->with('success', 'Permiso actualizado correctamente.');
+    }
+
+    public function destroy(Permission $permission)
+    {
+        $permission->delete();
+        return redirect()->back()->with('success', 'Permiso eliminado correctamente.');
+    }
+ else {
+            $companyView[] = $companyCode;
+        }
+
+        $permission->update(['company_view' => $companyView]);
+        return redirect()->back();
     }
 }

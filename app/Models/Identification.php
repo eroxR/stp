@@ -15,22 +15,32 @@ class Identification extends Model implements Auditable
 
 
 
-            //relación uno a muchos inversa
-        public function user(){
-            return $this->hasMany('App\Models\user');
-        }
-    
-        //relación uno a muchos inversa
-        public function contract(){
-            return $this->hasMany('App\Models\contract');
-        }
-    
-        //relación uno a muchos inversa
-        public function passenger(){
-            return $this->hasMany('App\Models\passenger');
-        } 
+    //relación uno a muchos inversa
+    public function user()
+    {
+        return $this->hasMany('App\Models\user');
+    }
 
-        protected $fillable = [
-            'description_identification',
-        ];
+    //relación uno a muchos inversa
+    public function contract()
+    {
+        return $this->hasMany('App\Models\contract');
+    }
+
+    //relación uno a muchos inversa
+    public function passenger()
+    {
+        return $this->hasMany('App\Models\passenger');
+    }
+
+    protected $fillable = [
+        'description_identification',
+        'visibility',
+        'company_view'
+    ];
+
+    // Cast para asegurar tipos
+    protected $casts = [
+        'company_view' => 'array',
+    ];
 }

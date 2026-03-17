@@ -8,59 +8,22 @@ use App\Http\Requests\UpdateVehicleLineRequest;
 
 class VehicleLineController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreVehicleLineRequest $request)
     {
-        //
+        VehicleLine::create($request->validated());
+        return redirect()->back()->with('success', 'Línea vehicular creada correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(VehicleLine $vehicleLine)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(VehicleLine $vehicleLine)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateVehicleLineRequest $request, VehicleLine $vehicleLine)
     {
-        //
+        $vehicleLine->update($request->validated());
+        return redirect()->back()->with('success', 'Línea vehicular actualizada correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(VehicleLine $vehicleLine)
     {
-        //
+        $vehicleLine->delete();
+        return redirect()->back()->with('success', 'Línea vehicular eliminada correctamente.');
     }
+
 }

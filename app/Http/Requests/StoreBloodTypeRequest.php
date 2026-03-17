@@ -11,9 +11,8 @@ class StoreBloodTypeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,7 +21,8 @@ class StoreBloodTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'blood_type_description' => 'required|string|max:25', // Máximo según tu DB
+            'visibility' => 'required|in:0,1',
         ];
     }
 }

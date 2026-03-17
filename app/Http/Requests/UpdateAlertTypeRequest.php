@@ -11,7 +11,7 @@ class UpdateAlertTypeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateAlertTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:100',
+            'description' => 'nullable|string',
+            'severity_level' => 'required|in:1,2,3',
+            'icon' => 'nullable|string|max:100',
+            'visibility' => 'required|in:0,1',
         ];
     }
 }

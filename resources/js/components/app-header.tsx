@@ -11,7 +11,7 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { UserMenuContent } from '@/components/user-menu-content';
 import { useInitials } from '@/hooks/use-initials';
-import { companyInfo, dashboard, permissions } from '@/routes';
+import { companyInfo, dashboard, employees, mainMaster, permissions } from '@/routes';
 import { PageProps, type BreadcrumbItem, type NavItem } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import {
@@ -42,7 +42,7 @@ const mainNavItems: NavItem[] = [
         icon: Settings, // Cambié el icono como ejemplo
         subItems: [
             { title: 'administrar permisos', href: permissions() },
-            { title: 'administrar tablas maestras', href: '/prueba/opcion2' },
+            { title: 'administrar tablas maestras', href: mainMaster() },
             { title: 'administrar info Empresarial', href: companyInfo() },
         ],
     },
@@ -51,7 +51,7 @@ const mainNavItems: NavItem[] = [
         href: dashboard(),
         icon: UserCircle, // Cambié el icono como ejemplo
         subItems: [
-            { title: 'registrar empleados', href: '/prueba/opcion1' },
+            { title: 'registrar empleados', href: employees() },
             { title: 'registrar terceros', href: '/prueba/opcion2' },
             { title: 'registrar vinculados', href: '/prueba/otra' },
             { title: 'registrar conductores', href: '/prueba/otra' },

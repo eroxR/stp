@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('bondings', function (Blueprint $table) { //tabla tipos de vinculacion
             $table->id();
             $table->string('bonding_type_description', 120)->comment('{descripcion_tipo_vinculacion} descripcion tipo Vinculacion o contrato');
-            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del tipo de vinculación ante el uso de los usuarios (visible/invisible)');
+            // $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del tipo de vinculación ante el uso de las compañias (visible/invisible)');
+            $table->json('company_view')->nullable()->comment('{visibilidad_empresa} array de empresas a las cuales el tipo de vinculación no es visible');
             $table->timestamps();
         });
     }

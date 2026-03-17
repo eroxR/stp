@@ -13,15 +13,22 @@ class DimensionRim extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
 
-    
+
     //relación uno a muchos 
     public function vehicle()
     {
         return $this->hasMany('App\Models\vehicle');
-    }  
+    }
 
     protected $fillable = [
+
         'type_rims',
         'inch',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
     ];
 }

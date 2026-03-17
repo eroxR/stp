@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('name', 20)->comment('{nombre} nombre del estado de la alerta ("Nueva","Resuelta", "Archivada", "Eliminada")');
             $table->string('icon_description', 100)->nullable()->comment('{icono_descripcion} descripcion del estado de la alerta');
             $table->text('description')->nullable()->comment('{descripcion} descripcion del estado de la alerta');
-            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del estado de la alerta ante el uso de los usuarios (visible/invisible)');
+            // $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del estado de la alerta ante el uso de las compañias (visible/invisible)');
+            $table->json('company_view')->nullable()->comment('{visibilidad_empresa} array de empresas a las cuales el estado de la alerta no es visible');
 
             $table->timestamps();
         });

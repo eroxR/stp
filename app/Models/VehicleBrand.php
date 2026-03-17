@@ -20,6 +20,13 @@ class VehicleBrand extends Model implements Auditable
     }
 
     protected $fillable = [
+        'code_brand_vehicle',
         'brand_vehicle',
+        'visibility',
+        'company_view',
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
     ];
 }

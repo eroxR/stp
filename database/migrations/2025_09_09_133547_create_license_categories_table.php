@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('code_licensecategory', 4)->unique()->comment('{codigo_categoria_licencia} codigo de la categoria de la licencia de conduccion');
             $table->string('description_licensecategory', 120)->comment('{descripcion_categoria_licencia} descripcion nombre de la categoria de la licencia de conduccion');
-            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la categoria de la licencia de conduccion ante el uso de los usuarios (visible/invisible)');
+            // $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la categoria de la licencia de conduccion ante el uso de las compañias (visible/invisible)');
+            $table->json('company_view')->nullable()->comment('{visibilidad_empresa} array de empresas a las cuales la categoria de licencia no es visible');
             $table->timestamps();
         });
     }

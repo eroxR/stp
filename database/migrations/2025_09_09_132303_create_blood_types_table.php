@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blood_types', function (Blueprint $table) {//tipos de sangre
+        Schema::create('blood_types', function (Blueprint $table) { //tipos de sangre
             $table->id();
             $table->string('blood_type_description', 25)->comment('descripcion_tipo_sangre} descripcion tipo Sangre');
+            // $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del tipo de sangre ante el uso de las compañias (visible/invisible)');
+            $table->json('company_view')->nullable()->comment('{visibilidad_empresa} array de empresas a las cuales el tipo de sangre no es visible');
             $table->timestamps();
         });
     }

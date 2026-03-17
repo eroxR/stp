@@ -6,23 +6,18 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRouteRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            //
+            'name_route' => 'required|string|max:255|unique:routes,name_route',
+            'description_route' => 'nullable|string|max:255',
+            'type_route' => 'required|in:O,D,A', // O=Origen, D=Destino, A=Ambos
+            'visibility' => 'required|in:0,1',
         ];
     }
 }

@@ -14,12 +14,19 @@ class VehicleType extends Model implements Auditable
 
 
 
-            //relación uno a muchos
-        public function vehicle(){
-            return $this->hasMany('App\Models\vehicle');
-        }  
+    //relación uno a muchos
+    public function vehicle()
+    {
+        return $this->hasMany('App\Models\vehicle');
+    }
 
-        protected $fillable = [
-            'vehicle_type_name',
-        ];
+    protected $fillable = [
+        'vehicle_type_name',
+        'visibility',
+        'company_view',
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
+    ];
 }

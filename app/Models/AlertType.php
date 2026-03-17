@@ -21,5 +21,13 @@ class AlertType extends Model implements Auditable
     protected $fillable = [
         'name',
         'description',
+        'severity_level',
+        'icon',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
     ];
 }

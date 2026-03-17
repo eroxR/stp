@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('code_company')->comment('{codigo_compañia} relación con la tabla empresas');
             $table->foreignId('branch_id')->constrained('branches')->comment('{id_sucursal} relación con la tabla sucursales');
 
+
             $table->timestamps();
         });
     }

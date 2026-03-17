@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('economicactivity_number')->unique()->comment('{codigo_actividad_economica} codigo de la Actividad Economica');
             $table->string('description_economicactivity')->comment('{descripcion_actividad_economica} descripcion de la Actividad Economica');
             $table->string('category_id')->comment('{categoria_id} división de la categoria de la Actividad Economica');
-            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la Actividad Economica ante el uso de los usuarios (visible/invisible)');
+            // $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la Actividad Economica ante el uso de las compañias (visible/invisible)');
+            $table->json('company_view')->nullable()->comment('{visibilidad_empresa} array de empresas a las cuales la actividad economica no es visible');
             $table->timestamps();
         });
     }

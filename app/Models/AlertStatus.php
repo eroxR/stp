@@ -25,9 +25,16 @@ class AlertStatus extends Model implements Auditable
     public const STATUS_DELETED = 4;
 
     protected $fillable = [
-        'description',
+        'code',
         'name',
         'icon_description',
-        'code',
+        'description',
+        'visibility',
+        'company_view',
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
+        'code' => 'integer',
     ];
 }

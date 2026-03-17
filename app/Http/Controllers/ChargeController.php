@@ -8,59 +8,22 @@ use App\Http\Requests\UpdateChargeRequest;
 
 class ChargeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreChargeRequest $request)
     {
-        //
+        Charge::create($request->validated());
+        return redirect()->back()->with('success', 'Cargo creado correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Charge $charge)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Charge $charge)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateChargeRequest $request, Charge $charge)
     {
-        //
+        $charge->update($request->validated());
+        return redirect()->back()->with('success', 'Cargo actualizado correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Charge $charge)
     {
-        //
+        $charge->delete();
+        return redirect()->back()->with('success', 'Cargo eliminado correctamente.');
     }
+
 }

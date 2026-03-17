@@ -8,59 +8,29 @@ use App\Http\Requests\UpdateIdentificationRequest;
 
 class IdentificationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreIdentificationRequest $request)
     {
-        //
+        // El $request ya viene validado gracias a la clase StoreIdentificationRequest
+
+        Identification::create($request->validated());
+
+        // Retornamos atrás con un mensaje flash (Inertia lo maneja)
+        return redirect()->back()->with('success', 'Registro creado correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Identification $identification)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Identification $identification)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateIdentificationRequest $request, Identification $identification)
     {
-        //
+        // Actualizamos con los datos validados
+        $identification->update($request->validated());
+
+        return redirect()->back()->with('success', 'Registro actualizado correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Identification $identification)
     {
-        //
+        $identification->delete();
+
+        return redirect()->back()->with('success', 'Registro eliminado correctamente.');
     }
+
 }

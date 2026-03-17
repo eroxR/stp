@@ -38,12 +38,14 @@ class UserFactory extends Factory
      */
     protected static ?string $password;
     protected static array $generatedUsernames = [];
+    public $lastsusernames = [];
 
     /**
      * Un contador estático para generar emails únicos durante el seeding.
      * @var int
      */
     protected static int $emailCounter = 1;
+    protected static array $usedUsernames = [];
 
 
     /**
@@ -57,54 +59,138 @@ class UserFactory extends Factory
      * @param string|null $motherslastname
      * @return string
      */
-    private function generateUniquePersonUsername(string $codeCompany, string $firstname, ?string $secondname, string $lastname, ?string $motherslastname): string
+
+    private function AuxiliaryGenerateUsername(string $firstname, ?string $secondname, string $lastname, ?string $motherslastname)
     {
-        // Limpiamos y preparamos los componentes del nombre
-        $fnInitial = substr($firstname, 0, 1);
-        $lnClean = preg_replace('/\s+/', '', $lastname); // Elimina espacios del apellido
-        $snInitial = !empty($secondname) ? substr($secondname, 0, 1) : '';
-        $mlInitial = !empty($motherslastname) ? substr($motherslastname, 0, 1) : '';
 
-        // --- Regla 1: {codigo}{inicial_nombre}{apellido} ---
-        $username = strtolower($codeCompany . $fnInitial . $lnClean);
-        if (!User::where('username', $username)->exists()) {
-            self::$generatedUsernames[] = $username; // ¡Lo guardamos en memoria!
-            return $username;
-        }
+        $letterFirstname = substr($firstname, 0, 1);
+        $letterSecondname = !empty($secondname) ? substr($secondname, 0, 1) : '';
+        $letterLastname = substr($lastname, 0, 1);
+        $letterMotherslastname = !empty($motherslastname) ? substr($motherslastname, 0, 1) : '';
+        $cleanFirstname = preg_replace('/\s+/', '', $firstname);
+        $cleanSecondname = !empty($secondname) ? preg_replace('/\s+/', '', $secondname) : '';
+        $cleanLastname = preg_replace('/\s+/', '', $lastname);
+        $cleanMotherslastname = !empty($motherslastname) ? preg_replace('/\s+/', '', $motherslastname) : '';
 
-        // --- Regla 2: {Regla 1}{inicial_segundo_apellido} ---
-        if ($mlInitial) {
-            $username .= strtolower($mlInitial);
-            if (!User::where('username', $username)->exists()) {
-                self::$generatedUsernames[] = $username; // ¡Lo guardamos en memoria!
-                return $username;
-            }
-        }
-
-        // --- Regla 3: {codigo}{inicial_nombre}{inicial_segundo_nombre}{apellido}{inicial_segundo_apellido} ---
-        // Volvemos a construirlo para insertar la inicial del segundo nombre
-        if ($snInitial) {
-            $username = strtolower($codeCompany . $fnInitial . $snInitial . $lnClean . $mlInitial);
-            if (!User::where('username', $username)->exists()) {
-                self::$generatedUsernames[] = $username; // ¡Lo guardamos en memoria!
-                return $username;
-            }
-        }
-
-        // --- Regla 4 (Fallback): {último_username_intentado}{contador} ---
-        // Si todo lo anterior falla, empezamos a añadir números.
-        $originalUsername = $username;
+        $validUser = false;
+        $username = '';
         $counter = 1;
-        while (User::where('username', $username)->exists()) {
-            // Formatea el contador con un cero a la izquierda si es menor de 10 (ej: 01, 02)
-            $suffix = str_pad($counter, 2, '0', STR_PAD_LEFT);
-            $username = $originalUsername . $suffix;
-            $counter++;
+        $option = [
+            $cleanFirstname,
+            $cleanFirstname . $letterLastname,
+            $cleanFirstname . $letterLastname . $letterMotherslastname,
+            $cleanFirstname . $letterSecondname . $letterLastname . $letterMotherslastname,
+            $cleanLastname,
+            $cleanLastname . $letterFirstname,
+            $cleanLastname . $letterFirstname . $letterMotherslastname,
+            $cleanLastname . $letterFirstname . $letterSecondname . $letterMotherslastname,
+            $cleanMotherslastname,
+            $cleanMotherslastname . $letterFirstname,
+            $cleanMotherslastname . $letterFirstname . $letterLastname,
+            $cleanMotherslastname . $letterFirstname . $letterLastname . $letterSecondname,
+            $cleanSecondname,
+            $cleanSecondname . $letterLastname,
+            $cleanSecondname . $letterLastname . $letterMotherslastname,
+            $cleanSecondname . $letterFirstname . $letterLastname . $letterMotherslastname,
+            $cleanFirstname . $cleanLastname,
+            $cleanFirstname . $cleanMotherslastname,
+            $cleanFirstname . $cleanSecondname,
+            $cleanSecondname . $cleanLastname,
+            $cleanSecondname . $cleanMotherslastname,
+        ];
+
+        for ($i = 0; $i < count($option); $i++) {
+
+            // $username = '@' . $option[$i];
+            // if (!User::where('username', $username)->exists()) {
+            //     if (!in_array($username, $lastsusername)) {
+
+            //         return $username;
+            //     }
+            // }
+
+            $username = '@' . $option[$i];
+            if (
+                !in_array($username, self::$usedUsernames) &&
+                !User::where('username', $username)->exists()
+            ) {
+                self::$usedUsernames[] = $username;
+                return $username;
+            }
         }
 
-        self::$generatedUsernames[] = $username; // ¡Guardamos en memoria el resultado final!
+        // do {
+
+        //     $suffix = str_pad($counter, 2, '0', STR_PAD_LEFT);
+        //     $username = '@' . $option[0] . $suffix;
+        //     if (!User::where('username', $username)->exists()) {
+        //         if (!in_array($username, $lastsusername)) {
+        //             $validUser = true;
+        //             return $username;
+        //         }
+        //     }
+        // } while ($validUser);
+
+
+        do {
+            $username = '@' . strtolower($firstname) . str_pad($counter++, 2, '0', STR_PAD_LEFT);
+        } while (
+            in_array($username, self::$usedUsernames) ||
+            User::where('username', $username)->exists()
+        );
+
+        self::$usedUsernames[] = $username;
         return $username;
     }
+
+    // private function generateUniquePersonUsername(string $codeCompany, string $firstname, ?string $secondname, string $lastname, ?string $motherslastname): string
+    // {
+    //     // Limpiamos y preparamos los componentes del nombre
+    //     $fnInitial = substr($firstname, 0, 1);
+    //     $lnClean = preg_replace('/\s+/', '', $lastname); // Elimina espacios del apellido
+    //     $snInitial = !empty($secondname) ? substr($secondname, 0, 1) : '';
+    //     $mlInitial = !empty($motherslastname) ? substr($motherslastname, 0, 1) : '';
+
+    //     // --- Regla 1: {codigo}{inicial_nombre}{apellido} ---
+    //     $username = strtolower($codeCompany . $fnInitial . $lnClean);
+    //     if (!User::where('username', $username)->exists()) {
+    //         self::$generatedUsernames[] = $username; // ¡Lo guardamos en memoria!
+    //         return $username;
+    //     }
+
+    //     // --- Regla 2: {Regla 1}{inicial_segundo_apellido} ---
+    //     if ($mlInitial) {
+    //         $username .= strtolower($mlInitial);
+    //         if (!User::where('username', $username)->exists()) {
+    //             self::$generatedUsernames[] = $username; // ¡Lo guardamos en memoria!
+    //             return $username;
+    //         }
+    //     }
+
+    //     // --- Regla 3: {codigo}{inicial_nombre}{inicial_segundo_nombre}{apellido}{inicial_segundo_apellido} ---
+    //     // Volvemos a construirlo para insertar la inicial del segundo nombre
+    //     if ($snInitial) {
+    //         $username = strtolower($codeCompany . $fnInitial . $snInitial . $lnClean . $mlInitial);
+    //         if (!User::where('username', $username)->exists()) {
+    //             self::$generatedUsernames[] = $username; // ¡Lo guardamos en memoria!
+    //             return $username;
+    //         }
+    //     }
+
+    //     // --- Regla 4 (Fallback): {último_username_intentado}{contador} ---
+    //     // Si todo lo anterior falla, empezamos a añadir números.
+    //     $originalUsername = $username;
+    //     $counter = 1;
+    //     while (User::where('username', $username)->exists()) {
+    //         // Formatea el contador con un cero a la izquierda si es menor de 10 (ej: 01, 02)
+    //         $suffix = str_pad($counter, 2, '0', STR_PAD_LEFT);
+    //         $username = $originalUsername . $suffix;
+    //         $counter++;
+    //     }
+
+    //     self::$generatedUsernames[] = $username; // ¡Guardamos en memoria el resultado final!
+    //     return $username;
+    // }
 
     /**
      * Genera un nombre de usuario único para un PROVEEDOR siguiendo reglas progresivas.
@@ -113,59 +199,59 @@ class UserFactory extends Factory
      * @param string $supplierName El nombre completo de la empresa proveedora
      * @return string Un nombre de usuario único garantizado.
      */
-    private function generateUniqueSupplierUsername(string $codeCompany, string $supplierName): string
-    {
-        // 1. Dividimos el nombre de la empresa por varios delimitadores comunes.
-        // preg_split es ideal para esto. El resultado es un array de palabras.
-        // Ejemplo: "connelly-emard-and-tillman" -> ['connelly', 'emard', 'and', 'tillman']
-        $nameParts = preg_split('/[\s\/\-_]+/', strtolower($supplierName));
+    // private function generateUniqueSupplierUsername(string $codeCompany, string $supplierName): string
+    // {
+    //     // 1. Dividimos el nombre de la empresa por varios delimitadores comunes.
+    //     // preg_split es ideal para esto. El resultado es un array de palabras.
+    //     // Ejemplo: "connelly-emard-and-tillman" -> ['connelly', 'emard', 'and', 'tillman']
+    //     $nameParts = preg_split('/[\s\/\-_]+/', strtolower($supplierName));
 
-        // 2. Construimos el username base con la primera palabra.
-        $baseUsername = $codeCompany . $nameParts[0];
+    //     // 2. Construimos el username base con la primera palabra.
+    //     $baseUsername = $codeCompany . $nameParts[0];
 
-        // 3. Verificamos si el username base está disponible.
-        if (!User::where('username', $baseUsername)->exists() && !in_array($baseUsername, self::$generatedUsernames)) {
-            self::$generatedUsernames[] = $baseUsername;
-            return $baseUsername;
-        }
+    //     // 3. Verificamos si el username base está disponible.
+    //     if (!User::where('username', $baseUsername)->exists() && !in_array($baseUsername, self::$generatedUsernames)) {
+    //         self::$generatedUsernames[] = $baseUsername;
+    //         return $baseUsername;
+    //     }
 
-        // 4. Si no está disponible, procedemos con la lógica de la segunda palabra.
-        if (isset($nameParts[1])) {
-            $secondWord = $nameParts[1];
+    //     // 4. Si no está disponible, procedemos con la lógica de la segunda palabra.
+    //     if (isset($nameParts[1])) {
+    //         $secondWord = $nameParts[1];
 
-            // Iteramos sobre cada letra de la segunda palabra.
-            for ($i = 1; $i <= strlen($secondWord); $i++) {
-                // Tomamos un fragmento de la segunda palabra (1 letra, 2 letras, etc.)
-                $fragment = substr($secondWord, 0, $i);
+    //         // Iteramos sobre cada letra de la segunda palabra.
+    //         for ($i = 1; $i <= strlen($secondWord); $i++) {
+    //             // Tomamos un fragmento de la segunda palabra (1 letra, 2 letras, etc.)
+    //             $fragment = substr($secondWord, 0, $i);
 
-                // Construimos el username candidato.
-                $candidateUsername = $baseUsername . $fragment . '...';
+    //             // Construimos el username candidato.
+    //             $candidateUsername = $baseUsername . $fragment . '...';
 
-                // Verificamos disponibilidad.
-                if (!User::where('username', $candidateUsername)->exists() && !in_array($candidateUsername, self::$generatedUsernames)) {
-                    self::$generatedUsernames[] = $candidateUsername;
-                    return $candidateUsername;
-                }
-            }
+    //             // Verificamos disponibilidad.
+    //             if (!User::where('username', $candidateUsername)->exists() && !in_array($candidateUsername, self::$generatedUsernames)) {
+    //                 self::$generatedUsernames[] = $candidateUsername;
+    //                 return $candidateUsername;
+    //             }
+    //         }
 
-            // Si el bucle termina, significa que incluso con la segunda palabra completa ya existía.
-            // Actualizamos el 'baseUsername' para la siguiente fase de numeración.
-            $baseUsername = $baseUsername . $secondWord;
-        }
+    //         // Si el bucle termina, significa que incluso con la segunda palabra completa ya existía.
+    //         // Actualizamos el 'baseUsername' para la siguiente fase de numeración.
+    //         $baseUsername = $baseUsername . $secondWord;
+    //     }
 
-        // 5. Fallback: Si todo lo anterior falla, empezamos a añadir un contador numérico.
-        $originalUsername = $baseUsername;
-        $counter = 1;
-        $usernameWithCounter = $originalUsername . str_pad($counter, 2, '0', STR_PAD_LEFT);
+    //     // 5. Fallback: Si todo lo anterior falla, empezamos a añadir un contador numérico.
+    //     $originalUsername = $baseUsername;
+    //     $counter = 1;
+    //     $usernameWithCounter = $originalUsername . str_pad($counter, 2, '0', STR_PAD_LEFT);
 
-        while (User::where('username', $usernameWithCounter)->exists() || in_array($usernameWithCounter, self::$generatedUsernames)) {
-            $counter++;
-            $usernameWithCounter = $originalUsername . str_pad($counter, 2, '0', STR_PAD_LEFT);
-        }
+    //     while (User::where('username', $usernameWithCounter)->exists() || in_array($usernameWithCounter, self::$generatedUsernames)) {
+    //         $counter++;
+    //         $usernameWithCounter = $originalUsername . str_pad($counter, 2, '0', STR_PAD_LEFT);
+    //     }
 
-        self::$generatedUsernames[] = $usernameWithCounter;
-        return $usernameWithCounter;
-    }
+    //     self::$generatedUsernames[] = $usernameWithCounter;
+    //     return $usernameWithCounter;
+    // }
 
     /**
      * Define the model's default state.
@@ -194,81 +280,68 @@ class UserFactory extends Factory
 
         return [
             // --- Campos que se llenarán con los estados ---
-            'username' => null,
-            'identification' => null,
-            'identificationcard' => null,
-            'firstname' => null,
-            'secondname' => null,
-            'lastname' => null,
-            'motherslastname' => null,
-            'birthdate' => null,
-            'age' => null,
-            'type_sex' => null,
-            'country' => null,
-            'department' => null,
-            'city' => null,
-            'address' => null,
-            'phone' => null,
-            'phone_cellular' => null,
-            'eps' => null,
-            'date_eps' => null,
-            'blood_type' => null,
-            'pension' => null,
-            'date_pension' => null,
-            'layoffs' => null,
-            'date_layoffs' => null,
-            'arl' => null,
-            'arl_date' => null,
-            'compensationbox' => null,
-            'date_compensationbox' => null,
-            'user_status' => '2', // Activo por defecto
+            'username'  => null,
+            'identification'  => null,
+            'identificationcard'  => null,
+            'firstname'  => null,
+            'secondname'  => null,
+            'lastname'  => null,
+            'motherslastname'  => null,
+            'birthdate'  => null,
+            'age'  => null,
+            'type_sex'  => null,
+            'country'  => null,
+            'department'  => null,
+            'city'  => null,
+            'address'  => null,
+            'phone'  => null,
+            'phone_cellular'  => null,
+            'blood_type'  => null,
+            'user_status'  => null,
             'user_entry_date' => $this->faker->dateTimeBetween('-3 years', 'now'),
-            'date_withdrawal_user' => null,
-            'date_refund' => null,
-            'charge' => null,
-            'usertype' => null, // Se definirá en cada estado
-            'civil_status' => null,
-            'family_document_type' => null,
-            'family_names' => null,
-            'relationship' => null,
-            'family_address' => null,
-            'family_phone' => null,
-            'family_phone_cellular' => null,
-            'city_birth' => null,
-            'place_expedition_identificationcard' => null,
-            'identificationcard_family' => null,
-            'bonding_type' => null,
-            'weight' => null,
-            'pant_size' => null,
-            'shirt_size' => null,
-            'shoe_size' => null,
-            'education_level' => null,
-            'educational_institution' => null,
-            'last_course' => null,
-            'study_end_date' => null,
-            'obtained_title' => null,
-            'last_company_name' => null,
-            'charges_last_company' => null,
-            'start_date_last_company' => null,
-            'date_end_last_company' => null,
-            'functions_performed' => null,
-            'salary' => null,
-            'aid_transport' => null,
-            'work_area' => null,
+            'date_withdrawal_user'  => null,
+            'date_refund'  => null,
+            'charge'  => null,
+            'usertype'  => null,
+            'civil_status'  => null,
+            'family_document_type'  => null,
+            'family_names'  => null,
+            'relationship'  => null,
+            'family_address'  => null,
+            'family_phone'  => null,
+            'family_phone_cellular'  => null,
+            'city_birth'  => null,
+            'place_expedition_identificationcard'  => null,
+            'identificationcard_family'  => null,
+            'bonding_type'  => null,
+            'weight'  => null,
+            'pant_size'  => null,
+            'shirt_size'  => null,
+            'shoe_size'  => null,
+            'education_level'  => null,
+            'educational_institution'  => null,
+            'last_course'  => null,
+            'study_end_date'  => null,
+            'obtained_title'  => null,
+            'last_company_name'  => null,
+            'charges_last_company'  => null,
+            'start_date_last_company'  => null,
+            'date_end_last_company'  => null,
+            'functions_performed'  => null,
+            'salary'  => null,
+            'aid_transport'  => null,
+            'work_area'  => null,
             'email' => $newEmail,
-            'email_verified_at' => null,
-            'nit' => null,
-            'supplier_name' => null,
-            'company_name_provider' => null,
-            'commercial_reason_supplier' => null,
-            'supplier_web_page' => null,
-            'supplier_category' => null,
-            'economic_activity' => null,
-            'products_and_services' => null,
-            'supplier_description' => null,
+            'email_verified_at'  => null,
+            'password_changed_at'  => null,
+            'license_category'  => null,
+            'driver_status'  => null,
+            'linked'  => null,
+            'isLinked'  => null,
+
 
             // --- Campos comunes y por defecto ---
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => static::$password ??= Hash::make($companyData['code'] . 'password'),
             'company_id' => $companyData['id'],
             'code_company' => $companyData['code'],
             'branch_id' => '001',
@@ -290,14 +363,9 @@ class UserFactory extends Factory
             $lastname = $this->faker->lastName;
             $motherslastname = $this->faker->optional()->lastName; // Puede ser null
 
-            // --- LÍNEA MODIFICADA ---
-            $username = $this->generateUniquePersonUsername(
-                $attributes['code_company'],
-                $firstname,
-                $secondname,
-                $lastname,
-                $motherslastname
-            );
+
+            $username = $this->AuxiliaryGenerateUsername($firstname, $secondname, $lastname, $motherslastname);
+
             return [
                 'usertype' => 3,
                 'firstname' => $firstname,
@@ -326,38 +394,6 @@ class UserFactory extends Factory
     {
         // La estructura es idéntica a la de Cliente, por lo que podemos reutilizar esa lógica
         return $this->asCliente()->state(['usertype' => 6]);
-    }
-
-    /**
-     * Configura el usuario como tipo Proveedor (usertype 5)
-     */
-    public function asProveedor()
-    {
-        return $this->state(function (array $attributes) {
-            $supplierName = $this->faker->company;
-
-
-            $uniqueUsername = $this->generateUniqueSupplierUsername(
-                $attributes['code_company'],
-                $supplierName
-            );
-
-            return [
-                'usertype' => 5,
-                'username' => $uniqueUsername,
-                'user_status' => '2',
-                'user_entry_date' => $this->faker->dateTimeBetween('-5 years', 'now'),
-                'nit' => $this->faker->unique()->numerify('#########-##'),
-                'supplier_name' => $supplierName,
-                'company_name_provider' => $supplierName,
-                'commercial_reason_supplier' => $supplierName . ' S.A.S.',
-                'supplier_web_page' => 'www.' . strtolower(Str::slug($supplierName)) . '.com',
-                'supplier_category' => SupplierCategory::inRandomOrder()->first()->id,
-                'economic_activity' => EconomicActivity::inRandomOrder()->first()->id,
-                'products_and_services' => ProductAndService::inRandomOrder()->first()->id,
-                'supplier_description' => $this->faker->paragraphs(2, true),
-            ];
-        });
     }
 
     /**
@@ -419,13 +455,7 @@ class UserFactory extends Factory
     private function getEmpleadoBaseData(array $attributes, string $firstname, ?string $secondname, string $lastname, ?string $motherslastname, Carbon $birthdate, string $userStatus, \DateTime $startDate, \DateTime $endDate): array
     {
 
-        $username = $this->generateUniquePersonUsername(
-            $attributes['code_company'],
-            $firstname,
-            $secondname,
-            $lastname,
-            $motherslastname
-        );
+        $username = $this->AuxiliaryGenerateUsername($firstname, $secondname, $lastname, $motherslastname);
 
         return [
             'usertype' => 4,
@@ -445,17 +475,6 @@ class UserFactory extends Factory
             'address' => $this->faker->streetAddress(),
             'phone' => $this->faker->phoneNumber,
             'phone_cellular' => $this->faker->phoneNumber,
-            'eps' => HealthEntity::inRandomOrder()->first()->id,
-            'date_eps' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'blood_type' => BloodType::inRandomOrder()->first()->id,
-            'pension' => Pension::inRandomOrder()->first()->id,
-            'date_pension' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'layoffs' => Layoffs::inRandomOrder()->first()->id,
-            'date_layoffs' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'arl' => Arl::inRandomOrder()->first()->id,
-            'arl_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'compensationbox' => CompensationBox::inRandomOrder()->first()->id,
-            'date_compensationbox' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'user_status' => $userStatus,
             'user_entry_date' => $startDate,
             'date_withdrawal_user' => $userStatus === '1' ? $this->faker->dateTimeBetween('-1 year', 'now') : null, // Status 3 = Retirado

@@ -11,7 +11,7 @@ class StoreAlertTypeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class StoreAlertTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:100',
+            'description' => 'nullable|string', // Puede ser nulo
+            'severity_level' => 'required|in:1,2,3', // Validación estricta
+            'icon' => 'nullable|string|max:100',
+            'visibility' => 'required|in:0,1',
         ];
     }
 }

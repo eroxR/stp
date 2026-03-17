@@ -11,7 +11,7 @@ class UpdateIdentificationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateIdentificationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'description_identification' => 'required|string|max:120',
+            'visibility' => 'required|in:0,1',
         ];
     }
 }

@@ -35,5 +35,7 @@ class Documentation extends Model implements Auditable
         'company_id',
         'code_company',
         'branch_id',
+        'visibility',
+        'company_view',
     ];
 }

@@ -11,7 +11,7 @@ class StoreEducationalLevelRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreEducationalLevelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'description_leveleducation' => 'required|string|max:45',
+            'visibility' => 'required|in:0,1',
         ];
     }
 }

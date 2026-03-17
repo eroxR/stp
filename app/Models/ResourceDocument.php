@@ -13,39 +13,6 @@ class ResourceDocument extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
 
-
-    //relación con la tabla users
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    //relación con la tabla periods
-    public function periodMedicalExams()
-    {
-        return $this->belongsTo(Period::class, 'period_medical_exams');
-    }
-
-    public function periodInductionReinduction()
-    {
-        return $this->belongsTo(Period::class, 'period_induction_reinduction');
-    }
-
-    public function periodAttorneyRecord()
-    {
-        return $this->belongsTo(Period::class, 'period_attorney_record');
-    }
-
-    public function periodComptrollerRecord()
-    {
-        return $this->belongsTo(Period::class, 'period_comptroller_record');
-    }
-
-    public function periodPoliceRecord()
-    {
-        return $this->belongsTo(Period::class, 'period_police_record');
-    }
-
     //relación con la tabla companies
     public function company()
     {
@@ -58,29 +25,27 @@ class ResourceDocument extends Model implements Auditable
         return $this->belongsTo(Branch::class);
     }
 
-    
+    // Relación solicitada con DocumentTracking
+    public function documentTrackings()
+    {
+        // Nota: En tu SQL la FK es "resourceDocument_id"
+        return $this->hasMany(DocumentTracking::class, 'resourceDocument_id');
+    }
+
 
     protected $fillable = [
-        'user_id',
-        'medical_exams',
-        'priority_medical_exams',
-        'period_medical_exams',
-        'induction_reinduction',
-        'priority_induction_reinduction',
-        'period_induction_reinduction',
-        'attorney_record',
-        'priority_attorney_record',
-        'period_attorney_record',
-        'comptroller_record',
-        'priority_comptroller_record',
-        'period_comptroller_record',
-        'police_record',
-        'priority_police_record',
-        'period_police_record',
-        'labor_reference',
-        'resume_format',
+
+        'name_document',
         'company_id',
         'code_company',
-        'branch_id'
+        'branch_id',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
+        'company_id' => 'integer',
+        'branch_id' => 'integer',
     ];
 }

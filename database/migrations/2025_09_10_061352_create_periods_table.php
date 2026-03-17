@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name_period')->unique()->comment('{nombre_periodo} nombre del periodo de vencimiento');
             $table->integer('days_period')->comment('{dias_periodo} número de días del periodo de vencimiento');
-            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del periodo ante el uso de los usuarios (visible/invisible)');
+            // $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del periodo ante el uso de las compañias (visible/invisible)');
+            $table->json('company_view')->nullable()->comment('{visibilidad_empresa} array de empresas a las cuales el periodo no es visible');
             $table->timestamps();
         });
     }

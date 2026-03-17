@@ -1,5 +1,5 @@
 baseDatos:
-    crear la base de datos stp en postgresSQL (48)=(46)
+    crear la base de datos stp en postgresSQL (57)=(46)
   1     - crear el modelo con todo de Compañia                                        /php artisan make:model Company -a
   2     - crear el modelo con todo de Sucursal                                        /php artisan make:model Branch -a
   3     - crear el modelo con todo de paises                                          /php artisan make:model Country -a
@@ -11,60 +11,60 @@ baseDatos:
   9     - crear el modelo con todo de tipo sangre                                     /php artisan make:model BloodType -a
   10    - crear el modelo con todo de tipo vinculación                                /php artisan make:model Bonding -a
   11    - crear el modelo con todo de area de trabajo                                 /php artisan make:model WorkArea -a
-  12    - crear el modelo con todo de actividad economica cvategoria                  /php artisan make:model EconomicActivityCategory -a
-  12    - crear el modelo con todo de actividad economica                             /php artisan make:model EconomicActivity -a
-  13    - crear el modelo con todo de Categoría de proveedor                           /php artisan make:model SupplierCategory -a
-  13    - crear el modelo con todo de productos y servicios                           /php artisan make:model productAndService -a
-  14    - crear el modelo con todo de cargos laboral                                  /php artisan make:model Charge -a
-  15    - crear el modelo con todo de relación familiar                               /php artisan make:model Relationship -a
-  16    - crear el modelo con todo de nivel educativos                                /php artisan make:model EducationalLevel -a
-  17    - crear el modelo con todo de tipo usuarios                                   /php artisan make:model UserType -a
-  18    - crear el modelo con todo de entidad de salud                                /php artisan make:model HealthEntity -a
-  19    - crear el modelo con todo de entidad de pensión                              /php artisan make:model Pension -a
-  20    - crear el modelo con todo de Entidad cesantias                               /php artisan make:model Layoffs -a
-  21    - crear el modelo con todo de entidad Arl                                     /php artisan make:model Arl -a
-  22    - crear el modelo con todo de caja de compensación                            /php artisan make:model CompensationBox -a
-  23    - crear el modelo con todo de categoria de licencia                           /php artisan make:model LicenseCategory -a
 
-  OriginRoute -a
-  DestinationRoute -a
+  12    - crear el modelo con todo de actividad economica categoria                  /php artisan make:model EconomicActivityCategory -a
+  13    - crear el modelo con todo de actividad economica                             /php artisan make:model EconomicActivity -a
+  14    - crear el modelo con todo de Categoría de proveedor                           /php artisan make:model SupplierCategory -a
+  15    - crear el modelo con todo de productos y servicios                           /php artisan make:model productAndService -a
 
-  24    - crear el modelo con todo de rutas                                           /php artisan make:model Route -a
+  
+  16    - crear el modelo con todo de cargos laboral                                  /php artisan make:model Charge -a
+  17    - crear el modelo con todo de relación familiar                               /php artisan make:model Relationship -a
+  18    - crear el modelo con todo de nivel educativos                                /php artisan make:model EducationalLevel -a
+  19    - crear el modelo con todo de entidades                                       /php artisan make:model Entity -a
+  20    - crear el modelo con todo de tipo usuarios                                   /php artisan make:model UserType -a
 
-   
-  26    - crear el modelo con todo de documentación conductor vehiculo usuarios       /php artisan make:model Documentation -a
-  27    - crear el modelo con todo de periodo de vencimientos                         /php artisan make:model period -a
-  28    - crear el modelo con todo de conductores                                     /php artisan make:model Driver -a
-  29    - crear el modelo con todo de documentos usuarios                             /php artisan make:model ResourceDocument -a
-  30    - crear el modelo con todo de marcas vehiculos                                /php artisan make:model VehicleBrand -a
-  31    - crear el modelo con todo de linea de vehiculo                               /php artisan make:model VehicleLine -a
-  32    - crear el modelo con todo de tipo de vehiculo                                /php artisan make:model VehicleType -a
-  33    - crear el modelo con todo de clase del vehiculo                              /php artisan make:model VehicleClass -a
-  34    - crear el modelo con todo de dimensión del rin                               /php artisan make:model DimensionRim -a
-  35    - crear el modelo con todo de tipo freno                                      /php artisan make:model BrakeType -a
-  36    - crear el modelo con todo de pedidos o solicitudes                           /php artisan make:model order -a
-  37    - crear el modelo con todo de tipo de contrato                                /php artisan make:model ContractType -a
-  38    - crear el modelo con todo de contratos                                       /php artisan make:model Contract -a
-  39    - crear el modelo con todo de vehiculos                                       /php artisan make:model Vehicle -a
-  40    - crear el modelo con todo de categoria de inspección                         /php artisan make:model InspectionCategory -a
-  41    - crear el modelo con todo de inspección                                      /php artisan make:model Inspection -a
-  42    - crear el modelo con todo de inspección vehicular                            /php artisan make:model VehicleInspection -a
-  43    - crear el modelo con todo de mantenimientos                                  /php artisan make:model maintenance -a
-  44    - crear el modelo con todo de permiso o FUEC                                  /php artisan make:model Permit -a
-  45    - crear el modelo con todo de documentos                                      /php artisan make:model Document -a
-  47    - crear el modelo con todo de accidente                                       /php artisan make:model Accident -a
+  21    - crear el modelo con todo de categoria de licencia                           /php artisan make:model LicenseCategory -a
+
+  22    - crear el modelo con todo de rutas                                           /php artisan make:model Route -a
+
+  23    - crear el modelo con todo de documentación conductor vehiculo usuarios       /php artisan make:model Documentation -a
+  24    - crear el modelo con todo de periodo de vencimientos                         /php artisan make:model period -a
+  25    - crear el modelo con todo de Seguimiento documental                          /php artisan make:model DocumentTracking -a
+  26    - crear el modelo con todo de documentos usuarios                             /php artisan make:model ResourceDocument -a
+
+  27    - crear el modelo con todo de marcas vehiculos                                /php artisan make:model VehicleBrand -a
+  28    - crear el modelo con todo de linea de vehiculo                               /php artisan make:model VehicleLine -a
+  29    - crear el modelo con todo de tipo de vehiculo                                /php artisan make:model VehicleType -a
+  30    - crear el modelo con todo de tipo combustible                                /php artisan make:model FuelType -a
+  31    - crear el modelo con todo de clase vehicular                                 /php artisan make:model vehicleClass -a
+  32    - crear el modelo con todo de dimensión del rin                               /php artisan make:model DimensionRim -a
+  33    - crear el modelo con todo de tipo freno                                      /php artisan make:model BrakeType -a
+  34    - crear el modelo con todo de pedidos o solicitudes                           /php artisan make:model order -a
+  35    - crear el modelo con todo de tipo de contrato                                /php artisan make:model ContractType -a
+  36    - crear el modelo con todo de plantilla del contrato                          /php artisan make:model ContractTemplate -a
+  37    - crear el modelo con todo de contratos                                       /php artisan make:model Contract -a
+  38    - crear el modelo con todo de vehiculos                                       /php artisan make:model Vehicle -a
+  39    - crear el modelo con todo de categoria de inspección                         /php artisan make:model InspectionCategory -a
+  40    - crear el modelo con todo de inspección                                      /php artisan make:model Inspection -a
+  41    - crear el modelo con todo de inspección vehicular                            /php artisan make:model VehicleInspection -a
+  42    - crear el modelo con todo de mantenimientos                                  /php artisan make:model maintenance -a
+  43    - crear el modelo con todo de permiso o FUEC                                  /php artisan make:model Permit -a
+  44    - crear el modelo con todo de documentos                                      /php artisan make:model Document -a
+  45    - crear el modelo con todo de accidente                                       /php artisan make:model Accident -a
   46    - crear el modelo con todo de comntrato-permiso-vehiculo-conductor            /php artisan make:model Cpvd -a
-  48    - crear el modelo con todo de beneficiario                                    /php artisan make:model Beneficiary -a
-  49    - crear el modelo con todo de pasajeros                                       /php artisan make:model passenger -a
-  50    - crear el modelo con todo de permis-vehiculo-conductor                       /php artisan make:model Pvd -a
-  51    - crear el modelo con todo de tipo de alerta                                  /php artisan make:model AlertType -a
-  52    - crear el modelo con todo de estado de la alerta                             /php artisan make:model AlertStatus -a
-  53    - crear el modelo con todo de alertas                                         /php artisan make:model alert -a
-        crear el modelo con todo de seguimiento vehicular                              php artisan make:model Tracking -a
+  47    - crear el modelo con todo de beneficiario                                    /php artisan make:model Beneficiary -a
+  48    - crear el modelo con todo de pasajeros                                       /php artisan make:model passenger -a
+  49    - crear el modelo con todo de permis-vehiculo-conductor                       /php artisan make:model Pvd -a
+  50    - crear el modelo con todo de tipo de alerta                                  /php artisan make:model AlertType -a
+  51    - crear el modelo con todo de estado de la alerta                             /php artisan make:model AlertStatus -a
+  52    - crear el modelo con todo de alertas                                         /php artisan make:model alert -a
+  53    - crear el modelo con todo de seguimiento vehicular                           /php artisan make:model Tracking -a
+  54    - crear el modelo con todo de plantilla de contrato                           /php artisan make:model documentTemplate -a
     
-  54    - composer require spatie/laravel-permission
+  55    - composer require spatie/laravel-permission
         - php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
-  *************************
+  56*************************
   |      composer require owen-it/laravel-auditing
   |      php artisan vendor:publish --provider="OwenIt\Auditing\AuditingServiceProvider" --tag="config"
   |      php artisan vendor:publish --provider="OwenIt\Auditing\AuditingServiceProvider" --tag="migrations"
@@ -82,6 +82,7 @@ baseDatos:
 
         crear el modelo con todo de ingreso al resinto o empresa
 
+    
 
     crear el modelo con todo de categoria de        php artisan make:model LicenseCategory -a
     
@@ -95,6 +96,7 @@ baseDatos:
     DB_DATABASE=stp
     DB_USERNAME=postgres
     DB_PASSWORD=12345
+    
 
 --Titulo de Menu--
 
@@ -138,6 +140,8 @@ nwidart/laravel-modules / composer require nwidart/laravel-modules
 laravel-dompdf / composer require dompdf/dompdf
 
 plantillas de layout, y utilización sidebar creado desde creado
+
+npm install react-tailwindcss-datepicker
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -508,3 +512,325 @@ boton cambio de idioma
          {i18n.language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
      </button>
  </div>
+
+
+
+ ----------------------------------------------------------------------------------------------------------------------------------
+
+ $table->id();
+            $table->foreignId('user_id')->constrained('users')->comment('{usuario_id} id del usuario conductor');
+            $table->bigInteger('license_number')->nullable()->comment('{numero_licencia} numero licencia de conducción');
+            $table->foreignId('license_category')->constrained('license_categories')->comment('{codigo_categoria} codigo de la categoria de la licencia de conducción');
+            $table->date('license_expiration')->nullable()->comment('{fecha_expiracion} fecha de expiración de la licencia de conducción');
+            $table->enum('priority_license_expiration', ['1', '0'])->default('0')->comment('{prioridad_licencia} prioridad de validación de la licencia (Alta 1=si, 0=no Baja)');
+            $table->foreignId('period_license')->constrained('periods')->comment('{id_periodo_licencia} id del periodo de vencimiento de la licencia');
+            $table->bigInteger('assigned_vehicle')->nullable()->comment('{vehiculo_asignado} id de la placa del vehículo asignado al conductor');
+            $table->date('certificate_drugs_alchoolemia')->nullable()->comment('{fecha_certificado_drogas_alcoholemia} fecha del certificado de drogas y alcoholemia');
+            $table->enum('priority_certificate_drugs_alchoolemia', ['1', '0'])->default('0')->comment('{prioridad_certificado_drogas_alcoholemia} prioridad de validación del certificado (Alta 1=si, 0=no Baja)');
+            $table->foreignId('period_certificate_drugs_alchoolemia')->constrained('periods')->comment('{periodo_certificado_drogas_alcoholemia} id del periodo de vencimiento del certificado');
+            $table->date('simit_queries')->nullable()->comment('{fecha_certificado_SIMIT} fecha del certificado SIMIT');
+            $table->enum('priority_simit_queries', ['1', '0'])->default('0')->comment('{prioridad_SIMIT} prioridad de validación del certificado SIMIT (Alta 1=si, 0=no Baja)');
+            $table->foreignId('period_simit_queries')->constrained('periods')->comment('{periodo_SIMIT} id del periodo de vencimiento del certificado SIMIT');
+            $table->date('rules_transit')->nullable()->comment('{fecha_certificado_Reglas_Transito} fecha del certificado de Normas de Tránsito');
+            $table->enum('priority_rules_transit', ['1', '0'])->default('0')->comment('{prioridad_Reglas_Transito} prioridad de validación del certificado (Alta 1=si, 0=no Baja)');
+            $table->foreignId('period_rules_transit')->constrained('periods')->comment('{periodo_Reglas_Transito} id del periodo de vencimiento del certificado');
+            $table->date('defensive_driving')->nullable()->comment('{fecha_certificado_Defensivo_conductor} fecha del certificado de Manejo Defensivo');
+            $table->enum('priority_defensive_driving', ['1', '0'])->default('0')->comment('{prioridad_Defensivo_conductor} prioridad de validación del certificado (Alta 1=si, 0=no Baja)');
+            $table->foreignId('period_defensive_driving')->constrained('periods')->comment('{periodo_Defensivo_conductor} id del periodo de vencimiento del certificado');
+            $table->date('first_aid')->nullable()->comment('{fecha_certificado_Primeros_Auxilios} fecha del certificado de Primeros Auxilios');
+            $table->enum('priority_first_aid', ['1', '0'])->default('0')->comment('{prioridad_Primeros_Auxilios} prioridad de validación del certificado (Alta 1=si, 0=no Baja)');
+            $table->foreignId('period_first_aid')->constrained('periods')->comment('{periodo_Primeros_Auxilios} id del periodo de vencimiento del certificado');
+            $table->date('psicosensometrico')->nullable()->comment('{fecha_certificado_psicosensometrico} fecha del certificado Psicosensometrico');
+            $table->enum('priority_psicosensometrico', ['1', '0'])->default('0')->comment('{prioridad_psicosensometrico} prioridad de validación del certificado Psicosensometrico (Alta 1=si, 0=no Baja)');
+            $table->foreignId('period_psicosensometrico')->constrained('periods')->comment('{periodo_psicosensometrico} id del periodo de vencimiento del certificado');
+            $table->date('road_safety')->nullable()->comment('{fecha_certificado_Seguridad_Vial} fecha del certificado de Seguridad Vial');
+            $table->enum('priority_road_safety', ['1', '0'])->default('0')->comment('{prioridad_Seguridad_Vial} prioridad de validación del certificado (Alta 1=si, 0=no Baja)');
+            $table->foreignId('period_road_safety')->constrained('periods')->comment('{periodo_Seguridad_Vial} id del periodo de vencimiento del certificado');
+            $table->enum('driver_status', ['1', '2'])->nullable()->comment('{habilitacion_conductor} estado de la habilitación del conductor [1=Inhabilitado, 2=Habilitado]');
+            $table->foreignId('linked')->constrained('users')->comment('{idVinculado} id del usuario dueño del vehículo vinculado');
+            $table->enum('isLinked', ['1', '0'])->nullable()->comment('{esVinculado} Indicador de si el conductor es dueño del vehículo (1=Si, 0=No)');
+            $table->foreignId('company_id')->constrained('companies')->comment('{id_compañia} relación con la tabla empresas');
+            $table->string('code_company')->comment('{codigo_compañia} relación con la tabla empresas');
+            $table->foreignId('branch_id')->constrained('branches')->comment('{id_sucursal} relación con la tabla sucursales');
+
+$table->foreignId('user_id')->constrained('users')->comment('{id_usuario} id del usuario');
+$table->date('medical_exams')->nullable()->comment('{fecha_examen_medico} fecha del examen médico ocupacional');
+$table->enum('priority_medical_exams', ['1', '0'])->default('0')->comment('{prioridad_examen_medico} prioridad de validación del examen médico (Alta 1=si, 0=no Baja)');
+$table->foreignId('period_medical_exams')->constrained('periods')->comment('{periodo_examen_medico} id del periodo de vencimiento del examen médico');
+$table->date('induction_reinduction')->nullable()->comment('{fecha_induccion_reinduccion} fecha del curso de inducción o reinducción');
+$table->enum('priority_induction_reinduction', ['1', '0'])->default('0')->comment('{prioridad_induccion_reinduccion} prioridad de validación del curso (Alta 1=si, 0=no Baja)');
+$table->foreignId('period_induction_reinduction')->constrained('periods')->comment('{periodo_induccion_reinduccion} id del periodo de vencimiento del curso');
+$table->date('attorney_record')->nullable()->comment('{fecha_poder_procuraduria} fecha del certificado de procuraduría');
+$table->enum('priority_attorney_record', ['1', '0'])->default('0')->comment('{prioridad_procuraduria} prioridad de validación del certificado de procuraduría (Alta 1=si, 0=no Baja)');
+$table->foreignId('period_attorney_record')->constrained('periods')->comment('{periodo_procuraduria} id del periodo de vencimiento del certificado');
+$table->date('comptroller_record')->nullable()->comment('{fecha_certificado_contraloria} fecha del certificado de la contraloría');
+$table->enum('priority_comptroller_record', ['1', '0'])->default('0')->comment('{prioridad_certificado_contraloria} prioridad de validación del certificado (Alta 1=si, 0=no Baja)');
+$table->foreignId('period_comptroller_record')->constrained('periods')->comment('{periodo_certificado_contraloria} id del periodo de vencimiento del certificado');
+$table->date('police_record')->nullable()->comment('{fecha_certificado_record_policial} fecha del certificado del record policial');
+$table->enum('priority_police_record', ['1', '0'])->default('0')->comment('{prioridad_certificado_record_policial} prioridad de validación del certificado (Alta 1=si, 0=no Baja)');
+$table->foreignId('period_police_record')->constrained('periods')->comment('{periodo_certificado_record_policial} id del periodo de vencimiento del certificado');
+$table->integer('labor_reference')->nullable()->comment('{referencia_laboral} id del documento de referencia laboral');
+$table->integer('resume_format')->nullable()->comment('{formato_hoja_devida} id del documento del formato hoja de vida');
+$table->foreignId('company_id')->constrained('companies')->comment('{id_compañia} relación con la tabla empresas');
+$table->string('code_company')->comment('{codigo_compañia} relación con la tabla empresas');
+$table->foreignId('branch_id')->constrained('branches')->comment('{id_sucursal} relación con la tabla sucursales');
+
+
+        return [
+            //
+            'user_id' => $userId,
+            'license_number' => $this->faker->unique()->numerify('##########'),
+            'license_category' => LicenseCategory::inRandomOrder()->first()->id,
+            'license_expiration' => $this->faker->dateTimeBetween('now', '+5 years'),
+            'priority_license_expiration' => $this->faker->randomElement(['1', '0']),
+            'period_license' => Period::inRandomOrder()->first()->id,
+            'certificate_drugs_alchoolemia' => $this->faker->dateTimeBetween('now', '+1 year'),
+            'priority_certificate_drugs_alchoolemia' => $this->faker->randomElement(['1', '0']),
+            'period_certificate_drugs_alchoolemia' => Period::inRandomOrder()->first()->id,
+            'simit_queries' => $this->faker->dateTimeBetween('-1 month', 'now'),
+            'priority_simit_queries' => $this->faker->randomElement(['1', '0']),
+            'period_simit_queries' => Period::inRandomOrder()->first()->id,
+            'rules_transit' => $this->faker->dateTimeBetween('now', '+2 years'),
+            'priority_rules_transit' => $this->faker->randomElement(['1', '0']),
+            'period_rules_transit' => Period::inRandomOrder()->first()->id,
+            'defensive_driving' => $this->faker->dateTimeBetween('now', '+2 years'),
+            'priority_defensive_driving' => $this->faker->randomElement(['1', '0']),
+            'period_defensive_driving' => Period::inRandomOrder()->first()->id,
+            'first_aid' => $this->faker->dateTimeBetween('now', '+2 years'),
+            'priority_first_aid' => $this->faker->randomElement(['1', '0']),
+            'period_first_aid' => Period::inRandomOrder()->first()->id,
+            'psicosensometrico' => $this->faker->dateTimeBetween('now', '+3 years'),
+            'priority_psicosensometrico' => $this->faker->randomElement(['1', '0']),
+            'period_psicosensometrico' => Period::inRandomOrder()->first()->id,
+            'road_safety' => $this->faker->dateTimeBetween('now', '+2 years'),
+            'priority_road_safety' => $this->faker->randomElement(['1', '0']),
+            'period_road_safety' => Period::inRandomOrder()->first()->id,
+            'driver_status' => $this->faker->randomElement(['1', '2']),
+            'linked' => User::where('usertype', 6)->inRandomOrder()->first()->id,
+            'isLinked' => $this->faker->randomElement(['1', '0']),
+            'company_id' => $companyData['id'],
+            'code_company' => $companyData['code'],
+            'branch_id' => '001',
+        ];
+
+        // $table->date('secure_end_date')->nullable()->comment('{fecha_final_seguro} fecha de finalización de la vigencia SOAT(Seguro Obligatorio de Accidentes de Tránsito)');
+// $table->enum('priority_secure_end_date', ['1', '0'])->default('0')->comment('{prioridad_fecha_final_seguro} prioridad de validación del SOAT(Seguro Obligatorio de Accidentes de Tránsito) (Alta 1=si, 0=no Baja)');
+// $table->foreignId('period_secure_end_date')->constrained('periods')->comment('{periodod_fecha_final_seguro} id del periodo de vencimiento del SOAT(Seguro Obligatorio de Accidentes de Tránsito)');
+// $table->date('technomechanical_end_date')->nullable()->comment('{fecha_final_tecnomecanica} fecha de finalización de la vigencia de la revisión tecnomecánica');
+// $table->enum('priority_technomechanical_end_date', ['1', '0'])->default('0')->comment('{prioridad_fecha_final_tecnomecanica} prioridad de validación de la revisión tecnomecánica (Alta 1=si, 0=no Baja)');
+// $table->foreignId('period_technomechanical_end_date')->constrained('periods')->comment('{periodo_fecha_final_tecnomecanica} id del periodo de vencimiento de la revisión tecnomecánica');
+// $table->date('certificate_extracontractual')->nullable()->comment('{certificado_extracontractual} Fecha de vencimiento del certificado de seguro extracontractual');
+// $table->enum('priority_certificate_extracontractual', ['1', '0'])->default('0')->comment('{prioridad_certificado_extracontractual} prioridad de validación del certificado de seguro extracontractual (Alta 1=si, 0=no Baja)');
+// $table->foreignId('period_certificate_extracontractual')->constrained('periods')->comment('{periodo_certificado_extracontractual} id del periodo de vencimiento del certificado de seguro extracontractual');
+// $table->date('civil_contractual')->nullable()->comment('{civil_contractual} Fecha de vencimiento del certificado de seguro civil contractual');
+// $table->enum('priority_civil_contractual', ['1', '0'])->default('0')->comment('{prioridad_civil_contractual} prioridad de validación del certificado de seguro civil contractual (Alta 1=si, 0=no Baja)');
+// $table->foreignId('period_civil_contractual')->constrained('periods')->comment('{periodo_civil_contractual} id del periodo de vencimiento del certificado de seguro civil contractual');
+// $table->string('card_operation', 120)->nullable()->comment('{tarjeta_operacion} numero de tarjeta de operacion del vehículo');
+// $table->date('expiration_card_operation')->nullable()->comment('{vencimiento_tarjeta_operacion} fecha de finalización de la vigencia de la tarjeta de operación');
+// $table->enum('priority_expiration_card_operation', ['1', '0'])->default('0')->comment('{prioridad_vencimiento_tarjeta_operacion} prioridad de validación de la tarjeta de operación (Alta 1=si, 0=no Baja)');
+// $table->foreignId('period_expiration_card_operation')->constrained('periods')->comment('{periodo_vencimiento_tarjeta_operacion} id del periodo de vencimiento de la tarjeta de operación');
+// $table->date('expiration_preventive')->nullable()->comment('{vencimiento_preventiva} fecha de finalización de la vigencia del plan de mantenimiento preventivo');
+// $table->enum('priority_expiration_preventive', ['1', '0'])->default('0')->comment('{prioridad_vencimiento_preventiva} prioridad de validación del plan de mantenimiento preventivo (Alta 1=si, 0=no Baja)');
+// $table->foreignId('period_expiration_preventive')->constrained('periods')->comment('{periodo_vencimiento_preventiva} id del periodo de vencimiento del plan de mantenimiento preventivo');
+// $table->date('last_oil_change')->nullable()->comment('{fecha_ultimo_cambio_aceite} fecha del último cambio de aceite del vehículo');
+// $table->enum('priority_last_oil_change', ['1', '0'])->default('0')->comment('{prioridad_ultimo_cambio_aceite} prioridad de validación del último cambio de aceite (Alta 1=si, 0=no Baja)');
+// $table->foreignId('period_last_oil_change')->constrained('periods')->comment('{periodo_ultimo_cambio_aceite} id del periodo de vencimiento del último cambio de aceite');
+// $table->integer('mileage_last_oil_change')->nullable()->comment('{kilometraje_ultimo_cambio_aceite} kilometraje del último cambio de aceite del vehículo');
+// $table->date('next_preventive_maintenance')->nullable()->comment('{proximo_mantenimiento_preventivo} fecha del próximo mantenimiento preventivo del vehículo');
+// $table->enum('priority_next_preventive_maintenance', ['1', '0'])->default('0')->comment('{prioridad_proximo_mantenimiento_preventivo} prioridad de validación del próximo mantenimiento preventivo (Alta 1=si, 0=no Baja)');
+// $table->foreignId('period_next_preventive_maintenance')->constrained('periods')->comment('{periodo_proximo_mantenimiento_preventivo} id del periodo de vencimiento del próximo mantenimiento preventivo');
+
+Model [C:\xampp\htdocs\stp\app\Models\Entity.php] created successfully.  
+
+   INFO  Factory [C:\xampp\htdocs\stp\database\factories\EntityFactory.php] created successfully.  
+
+
+
+
+
+
+   INFO  Migration [C:\xampp\htdocs\stp\database\migrations\2026_01_19_173642_create_entities_table.php] created successfully.     
+
+   INFO  Seeder [C:\xampp\htdocs\stp\database\seeders\EntitySeeder.php] created successfully.
+
+   INFO  Request [C:\xampp\htdocs\stp\app\Http\Requests\StoreEntityRequest.php] created successfully.
+
+   INFO  Request [C:\xampp\htdocs\stp\app\Http\Requests\UpdateEntityRequest.php] created successfully.
+
+   INFO  Controller [C:\xampp\htdocs\stp\app\Http\Controllers\EntityController.php] created successfully.
+
+   INFO  Policy [C:\xampp\htdocs\stp\app\Policies\EntityPolicy.php] created successfully.
+
+PS C:\xampp\htdocs\stp> php artisan make:model DocumentTracking -a
+
+   INFO  Model [C:\xampp\htdocs\stp\app\Models\DocumentTracking.php] created successfully.
+
+   INFO  Factory [C:\xampp\htdocs\stp\database\factories\DocumentTrackingFactory.php] created successfully.  
+
+   INFO  Migration [C:\xampp\htdocs\stp\database\migrations\2026_01_20_040334_create_document_trackings_table.php] created successfully.
+
+   INFO  Seeder [C:\xampp\htdocs\stp\database\seeders\DocumentTrackingSeeder.php] created successfully.  
+
+   INFO  Request [C:\xampp\htdocs\stp\app\Http\Requests\StoreDocumentTrackingRequest.php] created successfully.  
+
+   INFO  Request [C:\xampp\htdocs\stp\app\Http\Requests\UpdateDocumentTrackingRequest.php] created successfully.  
+
+   INFO  Controller [C:\xampp\htdocs\stp\app\Http\Controllers\DocumentTrackingController.php] created successfully.  
+
+   INFO  Policy [C:\xampp\htdocs\stp\app\Policies\DocumentTrackingPolicy.php] created successfully.  
+
+
+        Arl::insert(
+            [
+                // ['description_arl' => 'ARL Sura'],
+                // ['description_arl' => 'Aseguradora de Vida Colseguros'],
+                // ['description_arl' => 'BBVA Seguros de Vida'],
+                // ['description_arl' => 'Colmena S.A.  Seguros'],
+                // ['description_arl' => 'Colpatria Seguros S.A'],
+                // ['description_arl' => 'Compañia Agricola de seguros de Vida'],
+                // ['description_arl' => 'Compañia Central de Seguros'],
+                // ['description_arl' => 'Compañia de Seguros de Vida Aurora S.A.'],
+                // ['description_arl' => 'La Equidad Seguros'],
+                // ['description_arl' => 'La Previsora Vida S.A.'],
+                // ['description_arl' => 'Liberty Seguros S.A.'],
+                // ['description_arl' => 'Mapfre Colombia Vida Seguros S.A.'],
+                // ['description_arl' => 'Positiva Compañia de Seguros'],
+                // ['description_arl' => 'Seguros Bolivar S.A.'],
+                // ['description_arl' => 'Seguros de Vida ALFA S.A.'],
+                // ['description_arl' => 'Seguros de Vida del Estado'],
+            ]
+        );
+
+        CompensationBox::insert([
+            // ['description_compensationbox' => 'Caja Colombiana de Subsidio Familiar COLSUBSIDIO'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar AFIDRO'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar ASFAMILIAS'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar CAFAM'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar CAJACOPI ATLANTICO'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar Camacol COMFAMILIAR CAMACOL'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar Campesina COMCAJA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar Campesona COMFAMILIAR del ATLANTICO'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar COMFENALCO ANTIOQUIA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar Comfenalco del Valle del Cauca - COMFENALCO VALLE'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar COMFENALCO SANTANDER'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar COMPENSAR'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar Confamiliares Unidas del Valle COMFAUNION'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Antioquia COMFAMA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Arauca COMFIAR'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Barrancabermeja CAFABA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Barranquilla COMBARRANQUILLA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Boyacá - COMFABOY'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Buenaventura'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Caldas'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Cartagena'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Cartago - Comfacartago'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Córdoba COMFACOR'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Cundinamarca - COMFACUND'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Fenalco - Andi COMFENALCO CARTAGENA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Fenalco COMFENALCO CUNDINAMARCA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Fenalco COMFENALCO QUINDIO'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Fenalco del Tolima - COMFENALCO'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Girardot COMGIRARDOT'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Honda COMFAHONDA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de la Dorada - COMFAMILIAR'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de la Guajira'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Nariño'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Risaralda - COMFAMILIAR Risaralda'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Risaralda- COMFAMILIAR RISARALDA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de San Andrés y Providencia, Islas CAJASA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Sucre'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar de Tuluá - Comfamiliar de Tuluá'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Amazonas CAFAMAZ'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Caquetá - COMFACA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Casanare - COMFACASANARE'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Cauca - COMFACAUCA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Cesar COMFACESAR'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Chocó'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Huila - COMFAMILIAR'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Magdalena'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Norte de Santander COMFANORTE'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Oriente Colombiano COMFAORIENTE'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Putumayo - COMFAMILIAR PUTUMAYO'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Quindío COMFAMILIAR'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Sur del Tolima CAFASUR'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Tolima COMFATOLIMA'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar del Valle del Cauca COMFAMILIAR ANDI - COMFANDI'],
+            // ['description_compensationbox' => 'Caja de Compensación Familiar Regional del Meta COFREM'],
+            // ['description_compensationbox' => 'Caja Santandereana de Subsidio Familiar CAJASAN'],
+        ]);
+
+                HealthEntity::insert([
+            // ['description_eps' => 'ALIANSALUD'],
+            // ['description_eps' => 'AMBUQ'],
+            // ['description_eps' => 'ASMET SALUD'],
+            // ['description_eps' => 'CAFE SALUD'],
+            // ['description_eps' => 'CAPITAL SALUD'],
+            // ['description_eps' => 'COMPARTA'],
+            // ['description_eps' => 'COMPENSAR'],
+            // ['description_eps' => 'COOMEVA'],
+            // ['description_eps' => 'COOSALUD'],
+            // ['description_eps' => 'CRUZ BLANCA'],
+            // ['description_eps' => 'EMSSANAR'],
+            // ['description_eps' => 'FAMISANAR'],
+            // ['description_eps' => 'MEDIMAS'],
+            // ['description_eps' => 'MUTUAL SER'],
+            // ['description_eps' => 'NUEVA EPS'],
+            // ['description_eps' => 'SALUD TOTAL'],
+            // ['description_eps' => 'SALUDVIDA'],
+            // ['description_eps' => 'SANITAS'],
+            // ['description_eps' => 'SAVIA SALUD'],
+            // ['description_eps' => 'SERVICIO OCCIDENTAL DE SALUD S.O.S'],
+            // ['description_eps' => 'SURA'],
+        ]);
+
+                Layoffs::insert([
+            // ['description_layoffs' => 'Askandia S.A.'],
+            // ['description_layoffs' => 'Cesantías de Colombia S.A.'],
+            // ['description_layoffs' => 'Colfondos'],
+            // ['description_layoffs' => 'Colmena'],
+            // ['description_layoffs' => 'Colpatria'],
+            // ['description_layoffs' => 'Collayoffses'],
+            // ['description_layoffs' => 'Davivir S.A.'],
+            // ['description_layoffs' => 'Dinners S.A.'],
+            // ['description_layoffs' => 'Fondo Nacional del Ahorro'],
+            // ['description_layoffs' => 'Granfondo S.A.'],
+            // ['description_layoffs' => 'Invermañana'],
+            // ['description_layoffs' => 'Invertir'],
+            // ['description_layoffs' => 'Old Mutual'],
+            // ['description_layoffs' => 'Porvenir S.A.'],
+            // ['description_layoffs' => 'Protección S.A.'],
+        ]);
+
+                Pension::insert([
+            // ['description_pension' => 'Askandia S.A.'],
+            // ['description_pension' => 'Cesantías de Colombia S.A.'],
+            // ['description_pension' => 'Colfondos'],
+            // ['description_pension' => 'Colmena'],
+            // ['description_pension' => 'Colpatria'],
+            // ['description_pension' => 'Colpensiones'],
+            // ['description_pension' => 'Davivir S.A.'],
+            // ['description_pension' => 'Dinners S.A.'],
+            // ['description_pension' => 'Fondo Nacional del Ahorro'],
+            // ['description_pension' => 'Granfondo S.A.'],
+            // ['description_pension' => 'Invermañana'],
+            // ['description_pension' => 'Invertir'],
+            // ['description_pension' => 'Old Mutual'],
+            // ['description_pension' => 'Porvenir S.A.'],
+            // ['description_pension' => 'Protección S.A.'],
+        ]);
+
+
+            public function toggleVisibility(BloodType $bloodType)
+    {
+        $companyCode = auth()->user()->code_company;
+        $companyView = $bloodType->company_view ?? [];
+
+        if (in_array($companyCode, $companyView)) {
+            $companyView = array_values(array_filter($companyView, fn($c) => $c !== $companyCode));
+        } else {
+            $companyView[] = $companyCode;
+        }
+
+        $bloodType->update(['company_view' => $companyView]);
+        return redirect()->back();
+    }

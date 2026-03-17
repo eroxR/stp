@@ -13,30 +13,31 @@ class Document extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
 
-        	//relación muchos a muchos polimorfica
-        public function documento(){
-            return $this->morphTo();
-        }
+    //relación muchos a muchos polimorfica
+    public function documento()
+    {
+        return $this->morphTo();
+    }
 
-        //relación uno a muchos inversa
-        public function company(){
-            return $this->belongsTo(Company::class);
-        }
+    //relación uno a muchos inversa
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 
-        //relación uno a muchos inversa
-        public function branch(){
-            return $this->belongsTo(Branch::class);
-        }
+    //relación uno a muchos inversa
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
 
-         //campos asignables
-        protected $fillable = [
-            'documentable_id',
-            'document_name',
-            'extension',
-            'directory',
-            'documentable_type',
-            'company_id',
-            'code_company',
-            'branch_id',
-        ];
+    //campos asignables
+    protected $fillable = [
+        'name_document',
+        'company_id',
+        'code_company',
+        'branch_id',
+        'visibility',
+        'company_view',
+    ];
 }

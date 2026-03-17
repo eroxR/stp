@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('economic_activity_categories', function (Blueprint $table) {
+        Schema::create('economic_activity_categories', function (Blueprint $table) { //tabla categoria de la actividad economica
             $table->id();
             $table->string('division')->comment('{division} codigo de la categoria de la actividad económica');
             $table->string('groups')->comment('{grupo} codigo del grupo de la categoria de la actividad económica');
             $table->string('description')->comment('{descripcion} descripción o nombre de la categoría de actividad económica');
-            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la categoría de actividad económica ante el uso de los usuarios (visible/invisible)');
+            // $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible de la categoría de actividad económica ante el uso de las compañias (visible/invisible)');
+            $table->json('company_view')->nullable()->comment('{visibilidad_empresa} array de empresas a las cuales la categoria de la actividad economica no es visible');
             $table->timestamps();
         });
     }

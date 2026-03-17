@@ -21,5 +21,11 @@ class BloodType extends Model implements Auditable
 
     protected $fillable = [
         'blood_type_description',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
     ];
 }

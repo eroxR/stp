@@ -182,7 +182,7 @@ export default function SidebarLayout({
 
             {/* Main Content */}
             <main
-                className={`h-full flex-1 overflow-y-auto rounded-xl border border-gray-800 bg-white p-6 shadow-sm transition-all duration-300 dark:border-gray-700 dark:bg-gray-900 ${
+                className={`h-full flex-1 overflow-y-auto rounded-xl border border-gray-800 bg-white p-6 shadow-sm transition-all duration-300 dark:border-gray-700 dark:bg-neutral-900 ${
                     !isSidebarOpen ? 'md:ml-0' : ''
                 }`}
             >

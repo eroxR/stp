@@ -20,6 +20,12 @@ class Relationship extends Model implements Auditable
     }
 
     protected $fillable = [
-        'description_relationship'
+        'description_relationship',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
     ];
 }

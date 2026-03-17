@@ -14,23 +14,32 @@ class Country extends Model implements Auditable
 
 
 
-            //relación uno a muchos
-        public function provinces(){
-            return $this->hasMany('App\Models\provinces');
-        }
-    
-        //relación uno a muchos
-        public function city(){
-            return $this->hasMany('App\Models\city');
-        }
-    
-        //relación uno a muchos inversa
-        public function user(){
-            return $this->hasMany('App\Models\user');
-        } 
+    //relación uno a muchos
+    public function provinces()
+    {
+        return $this->hasMany('App\Models\provinces');
+    }
 
-        protected $fillable = [
-            'code_country',
-            'country_name'
-        ];
+    //relación uno a muchos
+    public function city()
+    {
+        return $this->hasMany('App\Models\city');
+    }
+
+    //relación uno a muchos inversa
+    public function user()
+    {
+        return $this->hasMany('App\Models\user');
+    }
+
+    protected $fillable = [
+        'code_country',
+        'country_name',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
+    ];
 }

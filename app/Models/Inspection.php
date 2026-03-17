@@ -22,5 +22,12 @@ class Inspection extends Model implements Auditable
     protected $fillable = [
         'name_description',
         'category_id',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
+        'category_id' => 'integer',
     ];
 }

@@ -8,59 +8,21 @@ use App\Http\Requests\UpdateAlertStatusRequest;
 
 class AlertStatusController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreAlertStatusRequest $request)
     {
-        //
+        AlertStatus::create($request->validated());
+        return redirect()->back()->with('success', 'Estado de alerta creado correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(AlertStatus $alertStatus)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(AlertStatus $alertStatus)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateAlertStatusRequest $request, AlertStatus $alertStatus)
     {
-        //
+        $alertStatus->update($request->validated());
+        return redirect()->back()->with('success', 'Estado de alerta actualizado correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(AlertStatus $alertStatus)
     {
-        //
+        $alertStatus->delete();
+        return redirect()->back()->with('success', 'Estado de alerta eliminado correctamente.');
     }
 }

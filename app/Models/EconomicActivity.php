@@ -22,6 +22,13 @@ class EconomicActivity extends Model implements Auditable
 
     protected $fillable = [
         'economicactivity_number',
-        'description_economicactivity'
+        'description_economicactivity',
+        'category_id',
+        'visibility',
+        'company_view',
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
     ];
 }

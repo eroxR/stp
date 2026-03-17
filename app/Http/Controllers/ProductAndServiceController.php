@@ -8,59 +8,23 @@ use App\Http\Requests\UpdateproductAndServiceRequest;
 
 class ProductAndServiceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function store(StoreProductAndServiceRequest $request)
     {
-        //
+        ProductAndService::create($request->validated());
+        return redirect()->back()->with('success', 'Producto/Servicio creado correctamente.');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function update(UpdateProductAndServiceRequest $request, ProductAndService $productAndService)
     {
-        //
+        // Importante: Asegúrate que el parámetro de la ruta coincida con $productAndService
+        $productAndService->update($request->validated());
+        return redirect()->back()->with('success', 'Producto/Servicio actualizado correctamente.');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreproductAndServiceRequest $request)
+    public function destroy(ProductAndService $productAndService)
     {
-        //
+        $productAndService->delete();
+        return redirect()->back()->with('success', 'Producto/Servicio eliminado correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(productAndService $productAndService)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(productAndService $productAndService)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateproductAndServiceRequest $request, productAndService $productAndService)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(productAndService $productAndService)
-    {
-        //
-    }
 }

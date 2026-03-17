@@ -21,5 +21,11 @@ class BrakeType extends Model implements Auditable
 
     protected $fillable = [
         'brake_type_description',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
     ];
 }

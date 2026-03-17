@@ -6,23 +6,18 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreChargeRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            //
+            'area' => 'nullable|exists:work_areas,id', // Validar que el área exista
+            'code_charge' => 'required|string|max:5|unique:charges,code_charge',
+            'description_charge' => 'required|string|max:120',
+            'visibility' => 'required|in:0,1',
         ];
     }
 }

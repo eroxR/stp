@@ -17,7 +17,8 @@ return new class extends Migration
             $table->text('description')->nullable()->comment('{descripcion} descripcion del tipo de alerta');
             $table->enum('severity_level', ['1', '2', '3'])->nullable()->comment('{nivel_severidad} nivel de severidad de la alerta ( "info", "warning", "danger")');
             $table->string('icon', 100)->nullable()->comment('{icono} icono del tipo de alerta');
-            $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del tipo de alerta ante el uso de los usuarios (visible/invisible)');
+            // $table->enum('visibility', ['1', '0'])->default('1')->comment('{visibilidad} estado visible del tipo de alerta ante el uso de las compañias (visible/invisible)');
+            $table->json('company_view')->nullable()->comment('{visibilidad_empresa} array de empresas a las cuales el tipo de alerta no es visible');
 
             $table->timestamps();
         });

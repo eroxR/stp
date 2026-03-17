@@ -16,7 +16,8 @@ class VehicleLine extends Model implements Auditable
     // Relación con la marca del vehículo
     public function brand()
     {
-        return $this->belongsTo('App\Models\Brand', 'brand_vehicle');
+
+        return $this->belongsTo(VehicleBrand::class, 'brand_vehicle', 'code_brand_vehicle');
     }
 
     // Relación con la clase del vehículo
@@ -28,5 +29,11 @@ class VehicleLine extends Model implements Auditable
     protected $fillable = [
         'brand_vehicle',
         'line_vehicle',
+        'visibility',
+        'company_view',
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
     ];
 }

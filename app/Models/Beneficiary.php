@@ -37,9 +37,11 @@ class Beneficiary extends Model implements Auditable
 
     protected $fillable = [
         'full_name',
+        'identification',
         'identificationcard',
-        'beneficiaryType',
+        'beneficiarytype',
         'user_id',
+        'beneficiary_company',
         'company_id',
         'code_company',
         'branch_id'

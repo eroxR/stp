@@ -14,11 +14,18 @@ class EducationalLevel extends Model implements Auditable
 
     //relación uno a muchos
 
-        public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\Models\user');
-    }  
+    }
 
     protected $fillable = [
-        'description_levelEducation',
+        'description_leveleducation',
+        'visibility',
+        'company_view'
+    ];
+
+    protected $casts = [
+        'company_view' => 'array',
     ];
 }

@@ -13,12 +13,20 @@ class UserType extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
 
-            //relación uno a muchos inversa
-        public function user(){
-            return $this->hasMany('App\Models\user');
-        } 
+    //relación uno a muchos inversa
+    public function user()
+    {
+        return $this->hasMany('App\Models\user');
+    }
 
-        protected $fillable = [
-            'description_usertype',
-        ];
+    protected $fillable = [
+        'description_usertype', // <--- Corregido (antes tenía campos de contratos)
+        'visibility',
+        'company_view',
+    ];
+
+    // AGREGAR CAST
+    protected $casts = [
+        'company_view' => 'array',
+    ];
 }

@@ -6,23 +6,18 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreproductAndServiceRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            //
+            'productandservice_description' => 'required|string|max:120',
+            // Puede ser nullable según tu SQL (no dice NOT NULL), pero si es obligatorio en tu lógica, pon 'required'
+            'supplier_category' => 'nullable|exists:supplier_categories,id',
+            'visibility' => 'required|in:0,1',
         ];
     }
 }
