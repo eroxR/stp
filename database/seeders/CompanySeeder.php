@@ -1,0 +1,131 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Company;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class CompanySeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        Company::insert([
+            [
+                'code_company' => '000',
+                'name_company' => 'Sistema de Transporte de Pasajeros S.A.S',
+                'nit_company' => '900373123-1',
+                'acronym_company' => 'STP S.A.S',
+                'economic_activity_code' => '4921',
+                'legal_representative' => 'Alba Hidalgo Osiris',
+                'legal_representative_identification' => 'CC',
+                'legal_representative_document' => '123456789',
+                'legal_representative_expedition_identificationcard' => 'Bogotá D.C.',
+                'address_representative_legal' => 'Calle 123 # 45-67',
+                'phone_representative_legal' => '+57 300 1234567',
+                'email_representative_legal' => 'osiris.hidalgo@stp.com',
+                'digital_signature_legal_representative' => 'firma_digital_jpg',
+                'legal_nature' => 'Sociedad por Acciones Simplificada',
+                'address_company' => 'Calle 123 # 45-67',
+                'phone_company' => '+57 300 1234567',
+                'email_company' => 'info@stp.com',
+                'website_company' => 'www.stp.com',
+                // 'logo_company',
+                'scope_company' => 'Nacional',
+                'description_company' => 'Empresa dedicada al transporte terrestre de pasajeros.',
+                'country_company' => 'Colombia',
+                'province_company' => 'Risaralda',
+                'city_company' => 'Dosquebradas',
+                'mission_company' => 'Brindar un servicio de transporte seguro y eficiente.',
+                'vision_company' => 'Ser líderes en el transporte terrestre de pasajeros en Colombia.',
+                'values_company' => 'Compromiso, Responsabilidad, Calidad',
+                'postal_code_company' => '111111',
+                'number_employees' => 100,
+                'number_branches' => 5,
+                'status_company' => '1',
+                'plans_company' => 'p',
+                'trial_ends_at' => '2023-12-31',
+                'subscription_start_at' => '2023-01-01',
+                'subscription_ends_at' => '2024-01-01',
+                'renewal_date' => '2024-01-01'
+            ],
+            [
+                'code_company' => '001',
+                'name_company' => 'Transportes Veloz S.A.S.',
+                'nit_company' => '900123456-1',
+                'acronym_company' => 'Veloz S.A.S',
+                'economic_activity_code' => '4921',
+                'legal_representative' => 'Juan Pérez',
+                'legal_representative_identification' => 'CC',
+                'legal_representative_document' => '1020304050',
+                'legal_representative_expedition_identificationcard' => 'Bogotá D.C.',
+                'address_representative_legal' => 'Avenida Siempre Viva 123',
+                'phone_representative_legal' => '+57 3109876543',
+                'email_representative_legal' => 'juan.perez@veloz.com',
+                'digital_signature_legal_representative' => 'firma_jp.jpg',
+                'legal_nature' => 'Sociedad por Acciones Simplificada',
+                'address_company' => 'Calle 100 # 45 - 67',
+                'phone_company' => '3101234567',
+                'email_company' => 'contacto@veloz.com',
+                'website_company' => 'www.veloz.com',
+                'scope_company' => 'Nacional',
+                'description_company' => 'Empresa de transporte de pasajeros con cobertura nacional.',
+                'country_company' => 'Colombia',
+                'province_company' => 'Cundinamarca',
+                'city_company' => 'Bogota',
+                'mission_company' => 'Conectar personas de manera rápida y segura.',
+                'vision_company' => 'Ser la empresa de transporte preferida por los colombianos.',
+                'values_company' => 'Puntualidad, Seguridad, Comodidad',
+                'postal_code_company' => '110111',
+                'number_employees' => 250,
+                'number_branches' => 10,
+                'status_company' => '1',
+                'plans_company' => 'b',
+                'trial_ends_at' => null,
+                'subscription_start_at' => '2023-03-15',
+                'subscription_ends_at' => '2024-03-15',
+                'renewal_date' => '2024-03-15'
+            ],
+            [
+                'code_company' => '002',
+                'name_company' => 'Carga Segura Ltda.',
+                'nit_company' => '900789123-2',
+                'acronym_company' => 'Carga Segura',
+                'economic_activity_code' => '4921',
+                'legal_representative' => 'Ana Rodríguez',
+                'legal_representative_identification' => 'CC',
+                'legal_representative_document' => '5060708090',
+                'legal_representative_expedition_identificationcard' => 'Medellín',
+                'address_representative_legal' => 'Calle Falsa 456',
+                'phone_representative_legal' => '+57 3201239876',
+                'email_representative_legal' => 'ana.rodriguez@cargasegura.com',
+                'digital_signature_legal_representative' => 'firma_ar.jpg',
+                'legal_nature' => 'Limitada',
+                'address_company' => 'Carrera 15 # 80 - 20',
+                'phone_company' => '3209876543',
+                'email_company' => 'info@cargasegura.com',
+                'website_company' => 'www.cargasegura.com',
+                'scope_company' => 'Regional',
+                'description_company' => 'Especialistas en transporte de carga refrigerada.',
+                'country_company' => 'Colombia',
+                'province_company' => 'Antioquia',
+                'city_company' => 'Medellín',
+                'mission_company' => 'Garantizar la entrega segura y a tiempo de la mercancía.',
+                'vision_company' => 'Expandir nuestras operaciones a todo el territorio nacional.',
+                'values_company' => 'Confianza, Eficiencia, Integridad',
+                'postal_code_company' => '050021',
+                'number_employees' => 120,
+                'number_branches' => 3,
+                'status_company' => '1',
+                'plans_company' => 'p',
+                'trial_ends_at' => '2023-11-30',
+                'subscription_start_at' => '2023-02-01',
+                'subscription_ends_at' => '2024-02-01',
+                'renewal_date' => '2024-02-01'
+            ],
+        ]);
+    }
+}

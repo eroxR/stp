@@ -36,4 +36,27 @@ class PasswordController extends Controller
 
         return back();
     }
+    public function forceUpdate(Request $request): RedirectResponse
+    {
+        // dd($request->all());
+        // 1. Validación sin 'current_password'
+        $validated = $request->validate([
+            'password' => ['required', 'confirmed', Password::defaults()],
+        ]);
+        // dd($validated);
+        // dd($request->user());
+        // 2. Actualización del usuario
+        $codecompany = $request->user()->code_company; // Obtener el company_code del usuario autenticado
+        // dd($codecompany);
+
+
+        $request->user()->forceFill([
+            // 'password' => Hash::make($validated['password']),
+            'password' => Hash::make($codecompany . $validated['password']),
+            'password_changed_at' => now(), // ¡Seguimos marcando que ya la cambió!
+        ])->save();
+
+        // 3. Redirección al dashboard
+        return redirect()->route('dashboard');
+    }
 }

@@ -1,10 +1,12 @@
 import { AppContent } from '@/components/app-content';
 import { AppHeader } from '@/components/app-header';
 import { AppShell } from '@/components/app-shell';
+import { useSessionTimeout } from '@/hooks/useSessionTimeout';
 import { type BreadcrumbItem } from '@/types';
 import type { PropsWithChildren } from 'react';
 
 export default function AppHeaderLayout({ children, breadcrumbs }: PropsWithChildren<{ breadcrumbs?: BreadcrumbItem[] }>) {
+    useSessionTimeout();
     return (
         <AppShell>
             <AppHeader breadcrumbs={breadcrumbs} />

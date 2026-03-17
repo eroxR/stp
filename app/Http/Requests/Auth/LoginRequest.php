@@ -2,9 +2,12 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\Company;
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 
@@ -26,7 +29,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'string'],
             'password' => ['required', 'string'],
         ];
     }
@@ -36,17 +39,105 @@ class LoginRequest extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+        $loginInput = $this->input('email'); // Sigue siendo 'email' por el nombre del campo del form
 
+        // Determina el método de login y busca al usuario
+        $isEmailLogin = filter_var($loginInput, FILTER_VALIDATE_EMAIL);
+        $user = null;
+
+        if ($isEmailLogin) {
+            // Búsqueda por email
+            $user = User::where('email', $loginInput)->first();
+        } else {
+            // Búsqueda por username (con lógica de empresa)
+            preg_match('/^([0-9]+)/', $loginInput, $matches);
+            if (isset($matches[1])) {
+                $companyCode = $matches[1];
+                $company = Company::where('code_company', $companyCode)->first();
+                if ($company) {
+                    $user = User::where('username', $loginInput)->where('company_id', $company->id)->first();
+                }
+            } else {
+                // Permite buscar por username sin código de empresa (ej. Super Usuario)
+                $user = User::where('username', $loginInput)->first();
+            }
+        }
+
+        // $loginInput = $this->input('email');
+        // $credentials = [];
+        // $companyFound = true; // Asumimos que la empresa se encontrará
+
+        // if (filter_var($loginInput, FILTER_VALIDATE_EMAIL)) {
+        //     // --- Login por EMAIL ---
+        //     $credentials = ['email' => $loginInput, 'password' => $this->input('password')];
+        // } else {
+        //     // --- Login por USERNAME ---
+        //     preg_match('/^([0-9]+)/', $loginInput, $matches);
+
+        //     if (isset($matches[1])) {
+        //         $companyCode = $matches[1];
+        //         $company = Company::where('code_company', $companyCode)->first();
+
+        //         if ($company) {
+        //             $credentials = [
+        //                 'username' => $loginInput,
+        //                 'password' => $this->input('password'),
+        //                 'company_id' => $company->id, // ¡Filtro clave para multi-empresa!
+        //             ];
+        //         } else {
+        //             $companyFound = false; // Marcamos que la empresa no se encontró
+        //         }
+        //     } else {
+        //         // Si el username no tiene un prefijo numérico, intentamos un login normal por username.
+        //         // Esto permite que un superadmin sin código de empresa pueda entrar.
+        //         $credentials = ['username' => $loginInput, 'password' => $this->input('password')];
+        //     }
+        // }
+
+        // --- LÓGICA DE VALIDACIÓN Y AUTENTICACIÓN ---
+
+        // Si la empresa no se encontró, lanzamos un error inmediatamente.
+        // if (!$companyFound) {
+        //     throw ValidationException::withMessages([
+        //         'email' => 'El código de la empresa en el nombre de usuario no es válido.',
+        //     ]);
+        // }
+
+        // // Intentamos autenticar con las credenciales que construimos.
+        // if (!Auth::attempt($credentials)) {
+        //     RateLimiter::hit($this->throttleKey());
+
+        //     // Lanzamos el error estándar de "credenciales incorrectas".
+        //     throw ValidationException::withMessages([
+        //         'email' => trans('auth.failed'),
+        //     ]);
+        // }
+
+        if (! $user || ! Hash::check($this->input('password'), $user->password)) {
+            RateLimiter::hit($this->throttleKey());
             throw ValidationException::withMessages([
-                'email' => __('auth.failed'),
+                'email' => trans('auth.failed'),
             ]);
         }
+
+        // 2. ¿El usuario está intentando usar un método no permitido?
+        if ($isEmailLogin && $user->type_access == 1) { // 1 = Solo Username
+            throw ValidationException::withMessages([
+                'email' => 'Esta cuenta solo permite el acceso con nombre de usuario.',
+            ]);
+        }
+        if (! $isEmailLogin && $user->type_access == 2) { // 2 = Solo Email
+            throw ValidationException::withMessages([
+                'email' => 'Esta cuenta solo permite el acceso con correo electrónico.',
+            ]);
+        }
+
+        Auth::login($user);
 
         RateLimiter::clear($this->throttleKey());
     }
@@ -81,7 +172,7 @@ class LoginRequest extends FormRequest
     {
         return $this->string('email')
             ->lower()
-            ->append('|'.$this->ip())
+            ->append('|' . $this->ip())
             ->transliterate()
             ->value();
     }

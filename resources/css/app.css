@@ -57,6 +57,7 @@
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
+    
 }
 
 :root {
@@ -137,5 +138,69 @@
 
     body {
         @apply bg-background text-foreground;
+    }
+}
+
+@keyframes-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.95); } }
+
+.animate-in { animation: keyframes-in 0.15s ease-out; }
+.animate-out { animation: keyframes-out 0.15s ease-out; }
+
+.zoom-in-90 { animation: zoom-in 0.2s ease-out; }
+.zoom-out-95 { animation: zoom-out 0.2s ease-out; }
+
+@keyframes zoom-in { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes zoom-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.95); } }
+
+.swal-theme {
+    /* Fondo del modal */
+    @apply bg-background text-foreground;
+
+    /* Estilos del Título */
+    .swal2-title {
+        @apply text-foreground;
+    }
+
+    /* Estilos del Contenido/HTML */
+    .swal2-html-container {
+        @apply text-muted-foreground;
+    }
+
+    /* Estilos del Botón de Confirmar (Principal) */
+    .swal2-confirm {
+        @apply bg-primary text-primary-foreground hover:bg-primary/90;
+    }
+
+    /* Estilos del Botón de Cancelar */
+    .swal2-cancel {
+        @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+    }
+
+    /* Estilos para los Inputs dentro del modal */
+    .swal2-input {
+        @apply bg-background border border-input text-foreground rounded-md shadow-sm;
+    }
+
+    /* Estilos para el mensaje de error de validación */
+    .swal2-validation-message {
+        @apply bg-destructive/10 text-destructive;
+    }
+}
+
+.swal-theme .swal2-confirm.swal-green {
+    @apply bg-green-600 text-white hover:bg-green-700 p-2 rounded-md;
+}
+
+.swal-theme .swal2-deny.swal-red {
+    @apply bg-red-600 text-white hover:bg-red-700 p-2 rounded-md;
+}
+.countdown-timer {
+    @apply text-red-600 font-bold;
+}
+
+.swal-theme.swal-remove-role {
+    .swal2-actions {
+        @apply space-x-3; /* agrega separación horizontal entre botones */
     }
 }
